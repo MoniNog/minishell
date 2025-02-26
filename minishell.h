@@ -9,13 +9,8 @@
 
 #endif
 
-<<<<<<< HEAD
-=======
-struct def s_token
-{
-	int		
+// struct def s_token
+// {
+// 	int		tok;
 	
-}		t_token
-
-#endif
->>>>>>> ba0d3de (token)
+// }		t_token;
