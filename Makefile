@@ -1,6 +1,7 @@
 NAME = minishell
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
+LDFLAGS = -lreadline
 
 SRC = $(wildcard src/*.c)
 OBJDIR = obj
@@ -10,7 +11,7 @@ DEPS = $(OBJS:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) -o $@ $(CFLAGS)
+	@$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
 $(OBJDIR)/%.o: src/%.c
 	@mkdir -p $(OBJDIR)
