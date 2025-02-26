@@ -19,9 +19,11 @@ $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) -o $@ $(CFLAGS) -L$(LIBFT_PATH) -l:libft.a $(LDFLAGS)
 
 $(LIBFT):
-	@$(MAKE) -C $(LIBFT_PATH)
+	@echo "Building libft ..."
+	@$(MAKE) -s -C $(LIBFT_PATH)
 
 $(OBJDIR)/%.o: src/%.c | $(OBJDIR)
+	@echo "Compiling $< ..."
 	@$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 # S'assurer que obj/ existe
@@ -32,12 +34,12 @@ $(OBJDIR):
 
 clean:
 	@rm -f $(OBJS) $(DEPS)
-	@$(MAKE) clean -C $(LIBFT_PATH)
+	@$(MAKE) clean -s -C $(LIBFT_PATH)
 
 fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(OBJDIR)
-	@$(MAKE) fclean -C $(LIBFT_PATH)
+	@$(MAKE) fclean -s -C $(LIBFT_PATH)
 
 re: fclean all
 
