@@ -6,11 +6,11 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:11:17 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/02/28 14:08:34 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/04 13:21:30 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 char	**ft_split_path(char *fullpath)
 {
