@@ -3,14 +3,15 @@ Version basique :
 1. Reads its input from the user’s terminal.
 	[ ] readline
 2. Breaks the input into words and operators, obeying the quoting rules described in [Quoting](https://www.gnu.org/software/bash/manual/bash.html#Quoting). These tokens are separated by `metacharacters`. Alias expansion is performed by this step (see [Aliases](https://www.gnu.org/software/bash/manual/bash.html#Aliases)).
-	[ ] split : "echo" 
+	[ ] split command line
 3. Parses the tokens into simple and compound commands (see [Shell Commands](https://www.gnu.org/software/bash/manual/bash.html#Shell-Commands)).
-	[ ]
+	[ ] fonction print "echo" : cmd, "bla bla bla" : arg
 4. Performs the various shell expansions (see [Shell Expansions](https://www.gnu.org/software/bash/manual/bash.html#Shell-Expansions)), breaking the expanded tokens into lists of filenames (see [Filename Expansion](https://www.gnu.org/software/bash/manual/bash.html#Filename-Expansion)) and commands and arguments.
 5. *Performs any necessary redirections (see [Redirections](https://www.gnu.org/software/bash/manual/bash.html#Redirections)) and removes the redirection operators and their operands from the argument list.*
 6. Executes the command (see [Executing Commands](https://www.gnu.org/software/bash/manual/bash.html#Executing-Commands)).
+	[ ] fonction echo
 7. Optionally waits for the command to complete and collects its exit status (see [Exit Status](https://www.gnu.org/software/bash/manual/bash.html#Exit-Status)).
-
+	[ ] print : exit status
 
 ___To do :___
 [ ] Run simple commands with absolute, relative path (e.g. /bin/ls, ../bin/ls)
