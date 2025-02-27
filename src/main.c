@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/27 09:19:27 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:29:12 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,21 @@ void	cleanup_memory(char *line, char **splited_line)
 	free(splited_line);
 }
 
-void	display_input(char **splited_line)
+void	kind_of_token(char *toctoc)
 {
+	if (ft_strncmp((const char *)toctoc, "echo", 4) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else
+		printf("%s = arg\n\n", toctoc);
+}
+	
+	void	display_input(char **splited_line)
+	{
 	int i = 0;
 	while (splited_line[i])
 	{
 		printf("splited_line[%d]: %s\n", i, splited_line[i]);
+		kind_of_token(splited_line[i]);
 		sleep(1);
 		i++;
 	}
