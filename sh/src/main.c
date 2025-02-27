@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid Date        by              +#+  #+#    #+#             */
-/*   Updated: 2025/03/04 14:39:48 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:05:31 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,17 @@ char	*get_user_input(const char *prompt)
 	return (line);
 }
 
-int	main()
+int	main(int ac, char **av, char **env)
 {
 	char	*input;
 	char	**splited_input;
+	(void)ac;
+	(void)av;
 
 	input = get_user_input("minishell> ");
 	splited_input = parse_input(input);
 //	splited_input = split_input(input);
+	first_word(splited_input, env);
 //	read_input(input);
 //	tokenize(splited_input);
 	display_input(splited_input);

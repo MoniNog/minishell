@@ -29,8 +29,8 @@ void	if_operator(char *input, char **array, int *k, int i);
 int		word_len(char *input);
 char	**first_parsing(char *input);
 char	**second_parsing(char **array);
-//void	*read_input(char *input, char **env);
-//void	first_word(char *input, char **env);
+void	*read_input(char *input, char **env);
+void	first_word(char **input, char **env);
 char	**parse_input(char *input);
 char	**fill_second_tab(char **array, char **tab_token);
 int		handle_non_operator(char **tab_token, char *array, int *index);
@@ -40,9 +40,9 @@ void	handle_operator(char **tab_token, char **array, int *index, int i);
 // fonctions token
 
 int		is_cmd(char *token, char **env);
-void	env_token(char *input, int i);
-void	operator_token(char token, char *input, int i);
-void	word_token(char *input, char **env, int i);
+void	env_token(char *token);
+void	operator_token(char *token);
+void	word_token(char *token);
 
 #endif
 
