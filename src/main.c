@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/27 09:29:12 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:32:55 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ void	cleanup_memory(char *line, char **splited_line)
 void	kind_of_token(char *toctoc)
 {
 	if (ft_strncmp((const char *)toctoc, "echo", 4) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else if (ft_strncmp((const char *)toctoc, "cd", 2) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else if (ft_strncmp((const char *)toctoc, "pwd", 3) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else if (ft_strncmp((const char *)toctoc, "exit", 4) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else if (ft_strncmp((const char *)toctoc, "env", 3) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else if (ft_strncmp((const char *)toctoc, "export", 6) == 0)
+		printf("\n%s = cmd\n", toctoc);
+	else if (ft_strncmp((const char *)toctoc, "unset", 5) == 0)
 		printf("\n%s = cmd\n", toctoc);
 	else
 		printf("%s = arg\n\n", toctoc);
