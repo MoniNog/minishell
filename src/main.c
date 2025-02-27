@@ -6,34 +6,68 @@
 /*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/26 18:34:50 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:19:27 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	read_input(const char *prompt)
+void	cleanup_memory(char *line, char **splited_line)
 {
-	char *line = readline(prompt);
-	char **splited_line;
-
-	splited_line = ft_split(line, ' ');
-
-	int i = 0;
-	while(splited_line[i])
+	free(line);
+	int j = 0;
+	while (splited_line[j])
 	{
-		printf("%s", splited_line[i]);
+		free(splited_line[j]);
+		j++;
+	}
+	free(splited_line);
+}
+
+void	display_input(char **splited_line)
+{
+	int i = 0;
+	while (splited_line[i])
+	{
+		printf("splited_line[%d]: %s\n", i, splited_line[i]);
+		sleep(1);
 		i++;
 	}
 	printf("nombre de mots : %i\n", i);
-	return ;
 }
 
-int	main(int ac, char **av)
+char	**split_input(char *line)
 {
-	if (ac > 1)
+	char **splited_line = ft_split(line, ' ');
+	if (!splited_line)
 	{
-		read_input(av[1]);
+		fprintf(stderr, "Error splitting line\n");
+		free(line);
+		return NULL;
 	}
-	return 0;
+	return (splited_line);
+}
+char	*get_user_input(const char *prompt)
+{
+	char *line = readline(prompt);
+	if (!line)
+	{
+		fprintf(stderr, "Error reading line\n");
+		return NULL;
+	}
+	printf("Input line: %s\n", line);
+	return(line);
+}
+
+
+int	main(void)
+{
+    char	*input;
+	char	**splited_input;
+	
+	input = get_user_input("minishell> ");
+	splited_input = split_input(input);
+	display_input(splited_input);
+	cleanup_memory(input, splited_input);
+    return 0;
 }
