@@ -7,10 +7,15 @@
 # include <readline/history.h>
 # include "lib/libft.h"
 
+typedef struct s_path
+{
+	char	
+}
+
 #endif
 
-// struct def s_token
-// {
-// 	int		tok;
-	
-// }		t_token;
+//struct def s_token
+//{
+//	int		tok;
+
+//}		t_token;

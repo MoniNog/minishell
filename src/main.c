@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/27 09:32:55 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:49:45 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,33 @@ void	cleanup_memory(char *line, char **splited_line)
 	free(splited_line);
 }
 
-void	kind_of_token(char *toctoc)
+void	kind_of_token(char *input)
 {
-	if (ft_strncmp((const char *)toctoc, "echo", 4) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else if (ft_strncmp((const char *)toctoc, "cd", 2) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else if (ft_strncmp((const char *)toctoc, "pwd", 3) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else if (ft_strncmp((const char *)toctoc, "exit", 4) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else if (ft_strncmp((const char *)toctoc, "env", 3) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else if (ft_strncmp((const char *)toctoc, "export", 6) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else if (ft_strncmp((const char *)toctoc, "unset", 5) == 0)
-		printf("\n%s = cmd\n", toctoc);
-	else
-		printf("%s = arg\n\n", toctoc);
-}
-	
-	void	display_input(char **splited_line)
+	if (ft_strncmp_end((const char *)input, "echo", 4) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (ft_strncmp_end((const char *)input, "cd", 2) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (ft_strncmp_end((const char *)input, "pwd", 3) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (ft_strncmp_end((const char *)input, "env", 3) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (ft_strncmp_end((const char *)input, "export", 6) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (ft_strncmp_end((const char *)input, "unset", 5) == 0)
+		printf("\n%s = cmd\n", input);
+	else if (pathconnu)
 	{
+		/* code */
+	}
+	
+	else
+		printf("%s = arg\n\n", input);
+}
+
+void	display_input(char **splited_line)
+{
 	int i = 0;
 	while (splited_line[i])
 	{
@@ -83,12 +88,12 @@ char	*get_user_input(const char *prompt)
 
 int	main(void)
 {
-    char	*input;
+	char	*input;
 	char	**splited_input;
 	
 	input = get_user_input("minishell> ");
 	splited_input = split_input(input);
 	display_input(splited_input);
 	cleanup_memory(input, splited_input);
-    return 0;
+	return 0;
 }

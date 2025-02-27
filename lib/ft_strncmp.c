@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 12:27:05 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:24:11 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/02/27 12:49:45 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp_end(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
@@ -26,5 +26,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 		n--;
 	}
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (s2[n + 1] == '\0')
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	else
+		return (-1);
 }
