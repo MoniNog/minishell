@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moni <moni@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/27 15:48:47 by moni             ###   ########.fr       */
+/*   Updated: 2025/02/28 10:14:56 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	cleanup_memory(char *line, char **splited_line)
 void	kind_of_token(char *input)
 {
 	if (ft_strncmp_end((const char *)input, "echo", 4) == 0)
+	{
 		printf("\n%s = cmd\n", input);
+		echo(input);
+	}	
 	else if (ft_strncmp_end((const char *)input, "cd", 2) == 0)
 		printf("\n%s = cmd\n", input);
 	else if (ft_strncmp_end((const char *)input, "pwd", 3) == 0)
@@ -86,10 +89,10 @@ int	main(void)
 {
 	char	*input;
 	char	**splited_input;
-	
-	input = get_user_input("minishell> ");
-	splited_input = split_input(input);
-	display_input(splited_input);
-	cleanup_memory(input, splited_input);
-	return 0;
+	while(1)
+		input = get_user_input("minishell> ");
+		splited_input = split_input(input);
+		display_input(splited_input);
+		cleanup_memory(input, splited_input);
+		return 0;
 }

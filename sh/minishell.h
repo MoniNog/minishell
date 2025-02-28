@@ -11,6 +11,8 @@
 // {
 // 	char	
 // }
+void	echo(char *input);
+
 
 #endif
 
