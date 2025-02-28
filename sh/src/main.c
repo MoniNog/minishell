@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/28 10:14:56 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/28 10:21:16 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	main(void)
 {
 	char	*input;
 	char	**splited_input;
-	while(1)
 		input = get_user_input("minishell> ");
 		splited_input = split_input(input);
 		display_input(splited_input);

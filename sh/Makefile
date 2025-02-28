@@ -1,4 +1,4 @@
-NAME = minishell
+NAME = minishell.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -lreadline -lncurses  # Ajout pour readline
