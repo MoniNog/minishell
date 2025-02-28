@@ -6,7 +6,11 @@
 /*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:54:56 by lylrandr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/02/27 12:37:11 by monoguei         ###   ########.fr       */
+=======
+/*   Updated: 2025/02/26 17:19:32 by lylrandr         ###   ########.fr       */
+>>>>>>> dd354a7 (lib)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +31,7 @@ typedef struct s_list
 }	t_list;
 
 //functions
+//lists
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new1);
@@ -36,6 +41,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new1);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+//rest
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
