@@ -6,9 +6,10 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/02 13:19:27 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:19:55 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../minishell.h"
 
@@ -98,9 +99,12 @@ int	main(void)
 	char	*input;
 	char	**splited_input;
 
-	input = get_user_input("minishell> ");
-	splited_input = split_input(input);
-	display_input(splited_input);
-	cleanup_memory(input, splited_input);
+	while (1)
+	{
+		input = get_user_input("minishell> ");
+		splited_input = split_input(input);
+		display_input(splited_input);
+		cleanup_memory(input, splited_input);
+	}
 	return (0);
 }
