@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/28 10:13:08 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/28 10:14:56 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,3 @@ int	main(void)
 		cleanup_memory(input, splited_input);
 		return 0;
 }
-Branch 'moni' set up to track remote branch 'moni' from 'origin'.
