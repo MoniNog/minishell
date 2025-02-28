@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/02/28 14:33:20 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:34:21 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,12 @@ int	main(void)
 	char	*input;
 	char	**splited_input;
 
-	input = get_user_input("minishell> ");
-	splited_input = split_input(input);
-	display_input(splited_input);
-	cleanup_memory(input, splited_input);
+	while (1)
+	{
+		input = get_user_input("minishell> ");
+		splited_input = split_input(input);
+		display_input(splited_input);
+		cleanup_memory(input, splited_input);
+	}
 	return (0);
 }
