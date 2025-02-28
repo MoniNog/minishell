@@ -15,6 +15,10 @@ Version basique :
 7. Optionally waits for the command to complete and collects its exit status (see [Exit Status](https://www.gnu.org/software/bash/manual/bash.html#Exit-Status)).
 	[ ] print : exit status
 
+
+
+
+
 ___To do :___
 [ ] Run simple commands with absolute, relative path (e.g. /bin/ls, ../bin/ls)
 [ ] Run simple commands without a path (e.g. ls, cat, grep, etc…)
