@@ -1,5 +1,6 @@
 DESCRIPTION (résumé en français)
-La fonction readline(const char *prompt) affiche un texte d’invite (prompt) si celui-ci n’est pas NULL. Ensuite, elle lit une ligne depuis l’entrée standard en proposant des fonctionnalités d’édition (se déplacer dans la ligne, supprimer du texte, etc.) et un historique des commandes.
+La fonction readline(const char *prompt) affiche un texte d’invite (prompt) si celui-ci n’est pas NULL. Ensuite, elle lit une ligne depuis l’entrée standard en proposant
+ des fonctionnalités d’édition (se déplacer dans la ligne, supprimer du texte, etc.) et un historique des commandes.
 
 Édition : L’utilisateur peut se déplacer dans la ligne (par ex. flèches), effacer, insérer.
 Historique : Les commandes tapées peuvent être stockées pour un réemploi ultérieur (via add_history).

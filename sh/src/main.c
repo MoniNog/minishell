@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/03/02 13:20:37 by monoguei         ###   ########.fr       */
+/*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/02 13:21:00 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,15 @@ int	main(void)
 {
 	char	*input;
 	char	**splited_input;
+
+	while (1)
+	{
 		input = get_user_input("minishell> ");
 		splited_input = split_input(input);
+		if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
+			break ;
 		display_input(splited_input);
 		cleanup_memory(input, splited_input);
-		return 0;
+	}
+	return (0);
 }
