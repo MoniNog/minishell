@@ -18,6 +18,10 @@
 // }
 void	echo(char *input);
 
+// signals.c
+__sighandler_t handler_sigint(void);
+void init_signals(void);
+void restore_terminal(void);
 
 #endif
 

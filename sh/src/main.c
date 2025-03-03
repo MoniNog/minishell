@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/03 07:36:20 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/03 08:18:48 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	main(void)
 	char	*input;
 	char	**splited_input;
 
+	init_signals();
+
 	while (1)
 	{
 		input = get_user_input("minishell> ");
@@ -106,7 +108,10 @@ int	main(void)
 		if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
 			break ;
 		display_input(splited_input);
+		restore_terminal();
 		cleanup_memory(input, splited_input);
+		init_signals();
 	}
+
 	return (0);
 }

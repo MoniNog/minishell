@@ -10,9 +10,8 @@
 struct termios g_term_backup;  // Sauvegarde de l'état initial du terminal
 
 // Handler pour SIGINT (Ctrl+C)
-void	handle_sigint(int sig)
+void	handle_sigint(void)
 {
-	(void)sig;
 	write(STDOUT_FILENO, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();
