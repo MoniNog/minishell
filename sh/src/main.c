@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/02 13:21:56 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:25:06 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	kind_of_token(char *input)
 		printf("\n%s = cmd\n", input);
 	else if (ft_strncmp_end((const char *)input, "pwd", 3) == 0)
 		printf("\n%s = cmd\n", input);
-	else if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
-		printf("\n%s = cmd\n", input);
+	// else if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
+	// 	printf("\n%s = cmd\n", input);
 	else if (ft_strncmp_end((const char *)input, "env", 3) == 0)
 		printf("\n%s = cmd\n", input);
 	else if (ft_strncmp_end((const char *)input, "export", 6) == 0)
@@ -90,6 +90,7 @@ char	*get_user_input(const char *prompt)
 		fprintf(stderr, "Error reading line\n");
 		return (NULL);
 	}
+	add_history(line);
 	printf("Input line: %s\n", line);
 	return (line);
 }

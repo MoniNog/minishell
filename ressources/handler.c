@@ -7,6 +7,8 @@
 #include <unistd.h>     // STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO, write
 #include <sys/wait.h>   // waitpid, WIFSIGNALED, WTERMSIG
 
+struct termios g_term_backup;  // Sauvegarde de l'état initial du terminal
+
 // Handler pour SIGINT (Ctrl+C)
 void	handle_sigint(int sig)
 {
@@ -21,18 +23,26 @@ void	handle_sigint(int sig)
 // Initialisation des handlers de signaux pour le shell parent
 void    init_signals(void)
 {
+	struct termios term;
+
 	// Ignorer Ctrl-\ (SIGQUIT) pour ne pas quitter le shell
 	signal(SIGQUIT, SIG_IGN);
 	// Intercepter Ctrl-C (SIGINT) avec notre handler
 	signal(SIGINT, handle_sigint);
 
-	// Désactiver l'écho des ^C/^\
-	struct termios term;
-	if (tcgetattr(STDIN_FILENO, &term) == 0)
+	// Sauvegarder l'état initial du terminal
+	if (tcgetattr(STDIN_FILENO, &g_term_backup) == 0)
 	{
-		term.c_lflag &= ~ECHOCTL;
+		term = g_term_backup;
+		term.c_lflag &= ~ECHOCTL;  // Désactiver l'affichage de ^C/^\
 		tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	}
+}
+
+// Restaurer l'état du terminal après exécution d'une commande
+void restore_terminal(void)
+{
+	tcsetattr(STDIN_FILENO, TCSANOW, &g_term_backup);
 }
 
 int main(void)
@@ -50,10 +60,17 @@ int main(void)
 		}
 		if (*input != '\0')
 			add_history(input);
-		// Ici, on traiterait la commande (parsing + execution).
+
+		// Avant d'exécuter une commande externe, restaurer le terminal
+		restore_terminal();
+
+		// Ici, on exécuterait la commande (parsing + execution)
 		// ... (code d'exécution non montré)
+
 		free(input);
+
+		// Réinitialiser les signaux après l'exécution d'une commande
+		init_signals();
 	}
-	// Optionnel: nettoyer l'historique readline si besoin, etc.
 	return exit_status;
 }
