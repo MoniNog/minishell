@@ -6,6 +6,11 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../lib/libft.h"
+# include <signal.h>     // signal, SIGINT, SIGQUIT, SIG_IGN
+# include <termios.h>    // termios, tcgetattr, tcsetattr
+# include <unistd.h>     // STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO, write
+# include <sys/wait.h>   // waitpid, WIFSIGNALED, WTERMSIG
+
 
 // typedef struct s_path
 // {

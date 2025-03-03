@@ -34,7 +34,7 @@ void    init_signals(void)
 	if (tcgetattr(STDIN_FILENO, &g_term_backup) == 0)
 	{
 		term = g_term_backup;
-		term.c_lflag &= ~ECHOCTL;  // Désactiver l'affichage de ^C/^\
+		term.c_lflag &= ~ECHOCTL;  // Désactiver l'affichage de ctrl + /
 		tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	}
 }
