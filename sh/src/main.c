@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/03 08:18:48 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/03 08:23:12 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	main(void)
 		if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
 			break ;
 		display_input(splited_input);
-		restore_terminal();
+		restore_terminal();// probleme de double affichage du prompt suite a ctrl + / lors dune execution
 		cleanup_memory(input, splited_input);
 		init_signals();
 	}
