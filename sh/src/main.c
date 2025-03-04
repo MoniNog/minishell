@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/03 08:23:12 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/03 23:36:02 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,62 @@ void	cleanup_memory(char *line, char **splited_line)
 	free(splited_line);
 }
 
-void	kind_of_token(char *input)
+int	kind_of_token(char *input)
 {
 	if (ft_strncmp_end((const char *)input, "echo", 4) == 0)
 	{
 		printf("\n%s = cmd\n", input);
 		echo(input);
+		return (0);
 	}	
 	else if (ft_strncmp_end((const char *)input, "cd", 2) == 0)
+	{
 		printf("\n%s = cmd\n", input);
+		return (0);
+	}
 	else if (ft_strncmp_end((const char *)input, "pwd", 3) == 0)
+	{
 		printf("\n%s = cmd\n", input);
-	// else if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
-	// 	printf("\n%s = cmd\n", input);
+		return (0);
+	}
 	else if (ft_strncmp_end((const char *)input, "env", 3) == 0)
+	{
 		printf("\n%s = cmd\n", input);
+		return (0);
+	}
 	else if (ft_strncmp_end((const char *)input, "export", 6) == 0)
+	{
 		printf("\n%s = cmd\n", input);
+		return (0);
+	}
 	else if (ft_strncmp_end((const char *)input, "unset", 5) == 0)
+	{
 		printf("\n%s = cmd\n", input);
-	else
+		return (0);
+	}
+	else // pas forcement arg, peut etre path/bin
 		printf("%s = arg\n\n", input);
+	return (1);
 }
 
-void	display_input(char **splited_line)
+void	execution(char *splited_line, char *argv, char **envp)
+{
+	if (kind_of_token(splited_line) == 1)
+	{
+		printf("execve");
+		execve(splited_line, (char * const *)argv, envp);
+	}
+	return ;
+}
+
+void	display_input(char **splited_line, t_envp *environ)
 {
 	int	i;
 
 	i = 0;
-	while (splited_line[i])
-	{
-		printf("splited_line[%d]: %s\n", i, splited_line[i]);
-		kind_of_token(splited_line[i]);
-		sleep(1);
-		i++;
-	}
-	printf("nombre de mots : %i\n", i);
+	printf("splited_line[%d]: %s\n", i, splited_line[i]);
+	execution(splited_line[i], splited_line[i + 1], environ->envp);
+	sleep(1);
 }
 
 char	**split_input(char *line)
@@ -94,12 +114,18 @@ char	*get_user_input(const char *prompt)
 }
 
 
-int	main(void)
+int	main(int ac, char **av, char **envp)
 {
 	char	*input;
 	char	**splited_input;
+	t_envp	*environ;
+	(void)ac;
+	(void)av;
 
 	init_signals();
+
+	environ = malloc(sizeof(t_envp));
+	environ->envp = envp;
 
 	while (1)
 	{
@@ -107,7 +133,7 @@ int	main(void)
 		splited_input = split_input(input);
 		if (ft_strncmp_end((const char *)input, "exit", 4) == 0)
 			break ;
-		display_input(splited_input);
+		display_input(splited_input, environ);
 		restore_terminal();// probleme de double affichage du prompt suite a ctrl + / lors dune execution
 		cleanup_memory(input, splited_input);
 		init_signals();

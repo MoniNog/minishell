@@ -12,10 +12,11 @@
 # include <sys/wait.h>   // waitpid, WIFSIGNALED, WTERMSIG
 
 
-// typedef struct s_path
-// {
-// 	char	
-// }
+typedef struct s_envp
+{
+	char	**envp;
+}			t_envp;
+
 void	echo(char *input);
 
 // signals.c
