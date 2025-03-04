@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
+/*   Updated: 2025/03/04 17:08:27 by lylrandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -29,7 +41,7 @@ void	if_operator(char *input, char **array, int *k, int i);
 int		word_len(char *input);
 char	**first_parsing(char *input);
 char	**second_parsing(char **array);
-void	*read_input(char *input, char **env);
+//void	*read_input(char **input, char **env);
 void	first_word(char **input, char **env);
 char	**parse_input(char *input);
 char	**fill_second_tab(char **array, char **tab_token);
@@ -40,9 +52,20 @@ void	handle_operator(char **tab_token, char **array, int *index, int i);
 // fonctions token
 
 int		is_cmd(char *token, char **env);
-void	env_token(char *token);
-void	operator_token(char *token);
-void	word_token(char *token);
+//void	env_token(char *token);
+//void	operator_token(char *token);
+//void	word_token(char *token);
+
+// fonctions path
+
+char	**ft_split_path(char *fullpath);
+char	*ft_find_executable(char **path, char *cmd);
+char	*ft_get_path(char *fullpath, char *cmd);
+char	*ft_get_env_path(char **env);
+
+// fonctions utils
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
 

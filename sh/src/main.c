@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid Date        by              +#+  #+#    #+#             */
-/*   Updated: 2025/03/04 15:05:31 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/04 17:11:26 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,12 @@ char	*get_user_input(const char *prompt)
 	char	*line;
 
 	line = readline(prompt);
-	char	*line;
-
-	line = readline(prompt);
 	if (!line)
 	{
 		fprintf(stderr, "Error reading line\n");
 		return (NULL);
 	}
 	printf("Input line: %s\n", line);
-	return (line);
 	return (line);
 }
 

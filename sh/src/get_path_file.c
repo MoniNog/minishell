@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:11:17 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/04 13:21:30 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:57:23 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ char	*ft_find_executable(char **path, char *cmd)
 		free(temp);
 		if (access(new_path, R_OK) == 0)
 		{
-			free_tab(path);
+//			free_tab(path);
 			return (new_path);
 		}
 		free(new_path);
 		i++;
 	}
-	free_tab(path);
+//	free_tab(path);
 	return (NULL);
 }
 
@@ -65,13 +65,13 @@ char	*ft_get_env_path(char **env)
 		path = ft_split(env[i], '=');
 		if (!path)
 			return (NULL);
-		if (ft_strncmp(path[0], "PATH", 4) == 0)
+		if (ft_strncmp_end(path[0], "PATH", 4) == 0)
 		{
 			result = ft_strdup(path[1]);
-			free_tab(path);
+//			free_tab(path);
 			return (result);
 		}
-		free_tab(path);
+//		free_tab(path);
 		i++;
 	}
 	return (NULL);

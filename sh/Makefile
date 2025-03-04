@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -lreadline -lncurses  # Ajout pour readline
 
-SRC = src/main.c src/tokenize.c src/first_parsing.c src/second_parsing.c
+SRC = src/main.c src/tokenize.c src/first_parsing.c src/second_parsing.c src/token_type.c src/get_path_file.c src/utils.c
 OBJDIR = obj
 OBJS = $(SRC:src/%.c=$(OBJDIR)/%.o)
 DEPS = $(OBJS:.o=.d)
