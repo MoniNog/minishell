@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/05 15:26:50 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:00:22 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,23 @@ typedef enum
 
 typedef struct s_token
 {
-	char *value;
-	WordType type;
-} t_token;
+	char 		*value;
+	WordType	type;
+} 				t_token;
 
+typedef struct s_env
+{
+	char			*name;
+	char			*value;
+	struct s_env	next;
+}					t_environ;
+
+typedef struct s_data
+{
+	
+}
 // fonctions parsing
+
 
 char	**fill_tab(char *input, char **array);
 void	if_n_op(char *input, char **array, int *k, int *i);
