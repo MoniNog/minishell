@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/05 15:08:14 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:26:50 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ char	*ft_get_env_path(char **env);
 // fonctions utils
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
+//MAIN
+void	display_input(char **splited_line);
 
 #endif
 
