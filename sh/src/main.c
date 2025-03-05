@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/05 15:17:56 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:30:32 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	kind_of_token(char *input)
 	else if (ft_strncmp_end((const char *)input, "unset", 5) == 0)
 	{
 		printf("\n%s = cmd\n", input);
-
-	else
 		return (0);
 	}
 	else // pas forcement arg, peut etre path/bin
@@ -77,13 +75,13 @@ void	execution(char *splited_line, char *argv, char **envp)
 	return ;
 }
 
-void	display_input(char **splited_line, t_envp *environ)
+void	display_input(char **splited_line)
 {
 	int	i;
 
 	i = 0;
 	printf("splited_line[%d]: %s\n", i, splited_line[i]);
-	execution(splited_line[i], splited_line[i + 1], environ->envp);
+	// execution(splited_line[i], splited_line[i + 1], environ->envp);
 	sleep(1);
 }
 
@@ -106,9 +104,6 @@ char	*get_user_input(const char *prompt)
 	char	*line;
 
 	line = readline(prompt);
-	char	*line;
-
-	line = readline(prompt);
 	if (!line)
 	{
 		fprintf(stderr, "Error reading line\n");
@@ -124,19 +119,22 @@ char	*get_user_input(const char *prompt)
 
 int	main(int ac, char **av, char **envp)
 {
+	(void)ac;
+	(void)av;
 	char	*input;
 	char	**splited_input;
 	init_signals();
 
-	environ = malloc(sizeof(t_envp));
-	environ->envp = envp;
-
+	while(1)
+	{
 		input = get_user_input("minishell> ");
-		splited_input = split_input(input);
+		splited_input = parse_input(input);
+		first_word(splited_input, envp);
 		display_input(splited_input);
 		restore_terminal();// probleme de double affichage du prompt suite a ctrl + / lors dune execution
 
 		cleanup_memory(input, splited_input);
 		init_signals();
+	}
 		return 0;
 }
