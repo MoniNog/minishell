@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/05 16:00:22 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/06 08:42:38 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ typedef struct s_env
 	char			*name;
 	char			*value;
 	struct s_env	next;
-}					t_environ;
+}					t_env;
 
 typedef struct s_data
 {
-	
-}
+	char		**input;// ligne de commande
+	t_env		*env;// tableau envp
+	int			exit_status;
+}				t_data;
 // fonctions parsing
 
 
