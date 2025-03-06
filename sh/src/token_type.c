@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 14:51:39 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/06 17:44:12 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:49:23 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	operator_token(char token, char *input, int i)
 
 void	env_token(char *input, int i)
 {
-	WordType type;
+	t_token_type type;
 	char	*token;
 	int		j;
 
@@ -56,7 +56,7 @@ void	env_token(char *input, int i)
 			j++;
 		}
 		token[j] = '\0';
-		type = ENV;
+		type = T_ENV;
 	}
 }
 

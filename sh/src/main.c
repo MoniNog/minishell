@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid Date        by              +#+  #+#    #+#             */
-/*   Updated: 2025/03/06 17:44:40 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:49:44 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void	kind_of_token(char *input)
 	if (ft_strncmp_end((const char *)input, "echo", 4) == 0)
 	{
 		printf("\n%s = cmd\n", input);
-//		echo(input);
-	}
-//		echo(input);
+		echo(input);
 	}
 	else if (ft_strncmp_end((const char *)input, "cd", 2) == 0)
 		printf("\n%s = cmd\n", input);
