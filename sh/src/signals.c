@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 07:36:08 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/03 08:16:18 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:10:29 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ __sighandler_t	handler_sigint(void)
 	write(1, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();
-	rl_redisplay();
+	// rl_redisplay();
 	// maj exit_status
 	return (SIG_IGN);
 }

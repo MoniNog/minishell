@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/06 08:42:38 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/06 09:07:07 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_env
 {
 	char			*name;
 	char			*value;
-	struct s_env	next;
+	struct s_env	*next;
 }					t_env;
 
 typedef struct s_data
@@ -99,7 +99,7 @@ char	*ft_get_env_path(char **env);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //MAIN
-void	display_input(char **splited_line);
+// void	display_input(char **splited_line);
 
 #endif
 

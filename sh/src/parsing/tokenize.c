@@ -6,11 +6,11 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/05 15:32:05 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/06 08:51:50 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 void	first_word(char **input, char **env)
 {
@@ -26,7 +26,7 @@ void	first_word(char **input, char **env)
 	}
 	else
 //		word_token(input[0]);
-		printf("else\n");
+		printf("else than cmd or op\n");
 }
 
 // void	read_input(char **input, char **env)
