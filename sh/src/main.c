@@ -5,15 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/04 14:18:25 by lylrandr         ###   ########.fr       */
+/*   Created: Invalid Date        by              +#+  #+#    #+#             */
+/*   Updated: 2025/03/06 17:44:40 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "../minishell.h"
 
 void	cleanup_memory(char *line, char **splited_line)
 {
+	int	j;
+
 	int	j;
 
 	free(line);
@@ -33,6 +37,8 @@ void	kind_of_token(char *input)
 		printf("\n%s = cmd\n", input);
 //		echo(input);
 	}
+//		echo(input);
+	}
 	else if (ft_strncmp_end((const char *)input, "cd", 2) == 0)
 		printf("\n%s = cmd\n", input);
 	else if (ft_strncmp_end((const char *)input, "pwd", 3) == 0)
@@ -46,13 +52,16 @@ void	kind_of_token(char *input)
 	else if (ft_strncmp_end((const char *)input, "unset", 5) == 0)
 		printf("\n%s = cmd\n", input);
 
+
 	else
 		printf("%s = arg\n\n", input);
 }
 
 void	display_input(char **splited_line)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (splited_line[i])
 	{
 		printf("splited_line[%d]: %s\n", i, splited_line[i]);
@@ -77,8 +86,25 @@ void	display_input(char **splited_line)
 //	return (splited_line);
 //}
 
+//char	**split_input(char *line)
+//{
+//	char	**splited_line;
+//
+//	splited_line = ft_split(line, ' ');
+//	if (!splited_line)
+//	{
+//		fprintf(stderr, "Error splitting line\n");
+//		free(line);
+//		return (NULL);
+//	}
+//	return (splited_line);
+//}
+
 char	*get_user_input(const char *prompt)
 {
+	char	*line;
+
+	line = readline(prompt);
 	char	*line;
 
 	line = readline(prompt);
@@ -86,8 +112,10 @@ char	*get_user_input(const char *prompt)
 	{
 		fprintf(stderr, "Error reading line\n");
 		return (NULL);
+		return (NULL);
 	}
 	printf("Input line: %s\n", line);
+	return (line);
 	return (line);
 }
 
@@ -105,3 +133,4 @@ int	main()
 	cleanup_memory(input, splited_input);
 	return (0);
 }
+

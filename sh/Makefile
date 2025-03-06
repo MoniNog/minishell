@@ -1,9 +1,9 @@
-NAME = minishell.a
+NAME = minishell
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 LDFLAGS = -lreadline -lncurses  # Ajout pour readline
 
-SRC = src/main.c src/tokenize.c src/first_parsing.c src/second_parsing.c
+SRC = src/main.c src/tokenize.c src/first_parsing.c src/second_parsing.c src/token_type.c src/get_path_file.c src/utils.c
 OBJDIR = obj
 OBJS = $(SRC:src/%.c=$(OBJDIR)/%.o)
 DEPS = $(OBJS:.o=.d)
@@ -21,9 +21,11 @@ $(LIBFT):
 	@echo "Building libft ..."
 	@$(MAKE) -s -C $(LIBFT_PATH)
 
-$(OBJDIR)/%.o: src/%.c | $(OBJDIR)
+$(OBJDIR)/%.o: src/%.c
+	@mkdir -p $(dir $@)  # <-- Crée le sous-dossier si nécessairegi
 	@echo "Compiling $< ..."
 	@$(CC) $(CFLAGS) -MMD -c $< -o $@
+
 
 # S'assurer que obj/ existe
 $(OBJDIR):
