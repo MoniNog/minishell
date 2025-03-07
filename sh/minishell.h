@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/07 09:24:40 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:33:19 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <termios.h>    // termios, tcgetattr, tcsetattr
 # include <unistd.h>     // STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO, write
 # include <sys/wait.h>   // waitpid, WIFSIGNALED, WTERMSIG
-#include <stddef.h>
+# include <stddef.h>
+# include <stdbool.h>
 
 
 typedef struct s_envp
@@ -103,6 +104,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //MAIN
 // void	display_input(char **splited_line);
+
+// Builtin
+void	b_echo(char **input);
 
 #endif
 

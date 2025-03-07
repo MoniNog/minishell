@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 09:21:29 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/07 09:33:32 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:57:26 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,26 @@
 #include <stdio.h>
 #include <unistd.h>
 
-typedef struct s_data
-{
-	char		**input;// ligne de commande
-	// t_env		*env;// tableau envp
-	int			exit_status;
-}				t_data;
+// typedef struct s_data
+// {
+// 	char		**input;// ligne de commande
+// 	// t_env		*env;// tableau envp
+// 	int			exit_status;
+// }				t_data;
 
-void	b_exit(t_data *data)
-{
-	// cleanup_memory(data->input);
-	printf("exit\n");
-	exit(0);
-}
-int	main(void)
-{
-	t_data *data;
+// void	b_exit(t_data *data)
+// {
+// 	// cleanup_memory(data->input);
+// 	printf("exit\n");
+// 	exit(0);
+// }
+// int	main(void)
+// {
+// 	t_data *data;
 
-	data = malloc(sizeof(t_data));
+// 	data = malloc(sizeof(t_data));
     
-	b_exit(data);
+// 	b_exit(data);
     
-	return (0);
-}
+// 	return (0);
+// }

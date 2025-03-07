@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/07 09:23:05 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/07 10:24:24 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,26 +114,45 @@ char	*get_user_input(const char *prompt)
 	add_history(line);
 	return (line);
 }
+int	tester(void)
+{
+	// t_data	*data;
+	char	**input;
 
+	input = malloc(sizeof(char *) * 4);
+
+	input[0] = "Elise";
+	input[1] = "a";
+	input[2] = "raison";
+	input[3] = NULL;
+    
+	b_echo(input);
+
+	free(input);
+    
+	return (0);
+}
 
 int	main(int ac, char **av, char **envp)
 {
 	(void)ac;
 	(void)av;
-	char	*input;
-	char	**splited_input;
-	init_signals();
+	(void)envp;
+	// char	*input;
+	// char	**splited_input;
+	// init_signals();
 
-	while(1)
-	{
-		input = get_user_input("minishell> ");
-		splited_input = parse_input(input);
-		first_word(splited_input, envp);
-		// display_input(splited_input);
-		restore_terminal();// probleme de double affichage du prompt suite a ctrl + / lors dune execution
+	// while(1)
+	// {
+	// 	input = get_user_input("minishell> ");
+	// 	splited_input = parse_input(input);
+	// 	first_word(splited_input, envp);
+	// 	// display_input(splited_input);
+	// 	restore_terminal();// probleme de double affichage du prompt suite a ctrl + / lors dune execution
 
-		cleanup_memory(input, splited_input);
-		init_signals();
-	}
+	// 	cleanup_memory(input, splited_input);
+	// 	init_signals();
+	// }
+	tester();
 		return 0;
 }
