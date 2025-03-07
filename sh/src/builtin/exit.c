@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/28 09:59:39 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/07 09:42:39 by monoguei         ###   ########.fr       */
+/*   Created: 2025/03/07 09:21:29 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/07 09:33:32 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "../../../lib/libft.h"
 
 typedef struct s_data
 {
@@ -23,32 +22,19 @@ typedef struct s_data
 	int			exit_status;
 }				t_data;
 
-void	b_echo(char **input)
+void	b_exit(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while(input[i])
-	{
-		ft_putstr_fd(input[i], 1);
-		i++;
-	}
+	// cleanup_memory(data->input);
+	printf("exit\n");
+	exit(0);
 }
-
 int	main(void)
 {
-	t_data	*data;
-	char	**input;
-
-
-	input[0] = "Elise";
-	input[1] = "a";
-	input[2] = "raison\n";
+	t_data *data;
 
 	data = malloc(sizeof(t_data));
-	data->input = input;
     
-	b_echo(data->input);
+	b_exit(data);
     
 	return (0);
 }

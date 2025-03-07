@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/06 09:07:07 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/07 09:24:40 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ char	**ft_split_path(char *fullpath);
 char	*ft_find_executable(char **path, char *cmd);
 char	*ft_get_path(char *fullpath, char *cmd);
 char	*ft_get_env_path(char **env);
+
+
+void	cleanup_memory(char *line, char **splited_line);
 
 // fonctions utils
 
