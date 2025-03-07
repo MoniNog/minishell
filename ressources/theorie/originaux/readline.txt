@@ -1,6 +1,5 @@
 DESCRIPTION (résumé en français)
-La fonction readline(const char *prompt) affiche un texte d’invite (prompt) si celui-ci n’est pas NULL. Ensuite, elle lit une ligne depuis l’entrée standard en proposant
- des fonctionnalités d’édition (se déplacer dans la ligne, supprimer du texte, etc.) et un historique des commandes.
+La fonction readline(const char *prompt) affiche un texte d’invite (prompt) si celui-ci n’est pas NULL. Ensuite, elle lit une ligne depuis l’entrée standard en proposant des fonctionnalités d’édition (se déplacer dans la ligne, supprimer du texte, etc.) et un historique des commandes.
 
 Édition : L’utilisateur peut se déplacer dans la ligne (par ex. flèches), effacer, insérer.
 Historique : Les commandes tapées peuvent être stockées pour un réemploi ultérieur (via add_history).
@@ -23,7 +22,7 @@ Gestion de l’historique
 Une fois que readline te renvoie la commande, tu peux l’ajouter à l’historique avec add_history().
 Ça te permettra de rappeler les anciennes commandes avec les flèches.
 Détection fin de fichier (EOF)
- 
+
 Si l’utilisateur tape Ctrl+D, readline renvoie NULL.
 Important pour gérer la sortie proprement (souvent, on termine le minishell si on reçoit NULL).
 Libération de mémoire

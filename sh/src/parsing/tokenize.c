@@ -6,12 +6,15 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/06 08:51:50 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/07 08:17:58 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+/// @brief 
+/// @param input 
+/// @param env 
 void	first_word(char **input, char **env)
 {
 	if (ft_strncmp(input[0], "<", 1) == 0 || ft_strncmp(input[0], ">",
@@ -22,7 +25,7 @@ void	first_word(char **input, char **env)
 	else if (!is_cmd(input[0], env))
 	{
 		printf("minishell: command not found: %s\n", input[0]);
-		exit(127);
+		// exit(127);
 	}
 	else
 //		word_token(input[0]);
