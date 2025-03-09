@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/09 20:19:39 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:02:04 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,31 @@ int	tester_pwd(void)
 
 void tester_env(char **envp)
 {
-    t_data data;
-    init_env(&data, envp);
-	b_env(&data);
+    t_data *data;
+	data = malloc(sizeof(t_data));
+
+	init_env(data, envp);
+
+}
+
+void tester_cd(char **envp)
+{
+	char	**input;
+	t_data	*data;
+	data = malloc(sizeof(t_data));
+
+	input = malloc(sizeof(char *) * 3);
+
+	input[0] = "cd";
+	input[1] = "src";
+	input[2] = NULL;
+
+	init_env(data, envp);
+    b_pwd();
+	b_cd(data, input[1]);
+    b_pwd();
+
+	free(input);
 }
 
 int main(int ac, char **av, char **envp)
@@ -170,5 +192,6 @@ int main(int ac, char **av, char **envp)
     // }
 
     tester_env(envp);
+	tester_cd(envp);
     return 0;
 }

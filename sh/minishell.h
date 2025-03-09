@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/09 20:18:57 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/09 20:43:00 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n);
 void	b_echo(char **input);
 void	b_pwd(void);
 void	b_env(t_data *data);
+void	b_cd(t_data *data, char *arg);
 
+// init_environment
 t_env *create_env_var(char *env_var);
 t_env *convert_envp(char **envp);
 void init_env(t_data *data, char **envp);
 
 #endif
-
-//struct def s_token
-//{
-//	int		tok;
-
-//}		t_token;
