@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/07 10:24:24 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/09 20:19:39 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	*get_user_input(const char *prompt)
 	add_history(line);
 	return (line);
 }
-int	tester(void)
+int	tester_echo(void)
 {
 	// t_data	*data;
 	char	**input;
@@ -133,26 +133,42 @@ int	tester(void)
 	return (0);
 }
 
-int	main(int ac, char **av, char **envp)
+int	tester_pwd(void)
 {
-	(void)ac;
-	(void)av;
-	(void)envp;
-	// char	*input;
-	// char	**splited_input;
-	// init_signals();
+	b_pwd();
 
-	// while(1)
-	// {
-	// 	input = get_user_input("minishell> ");
-	// 	splited_input = parse_input(input);
-	// 	first_word(splited_input, envp);
-	// 	// display_input(splited_input);
-	// 	restore_terminal();// probleme de double affichage du prompt suite a ctrl + / lors dune execution
+	return (0);
+}
 
-	// 	cleanup_memory(input, splited_input);
-	// 	init_signals();
-	// }
-	tester();
-		return 0;
+void tester_env(char **envp)
+{
+    t_data data;
+    init_env(&data, envp);
+	b_env(&data);
+}
+
+int main(int ac, char **av, char **envp)
+{
+    (void)ac;
+    (void)av;
+    (void)envp;
+
+    // Uncomment and use the following lines if needed
+    // char *input;
+    // char **splited_input;
+    // init_signals();
+
+    // while (1)
+    // {
+    //     input = get_user_input("minishell> ");
+    //     splited_input = parse_input(input);
+    //     first_word(splited_input, envp);
+    //     // display_input(splited_input);
+    //     restore_terminal(); // problème de double affichage du prompt suite à ctrl + / lors d'une exécution
+    //     cleanup_memory(input, splited_input);
+    //     init_signals();
+    // }
+
+    tester_env(envp);
+    return 0;
 }

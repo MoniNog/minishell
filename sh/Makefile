@@ -20,12 +20,12 @@ $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(OBJS) -o $@ $(CFLAGS) -L$(LIBFT_PATH) -l:libft.a $(LDFLAGS)
 
 $(LIBFT):
-	@echo "Building libft ..."
+#	@echo "Building libft ..."
 	@$(MAKE) -s -C $(LIBFT_PATH)
 
 $(OBJDIR)/%.o: src/%.c
 	@mkdir -p $(dir $@)  # <-- Crée le sous-dossier si nécessairegi
-	@echo "Compiling $< ..."
+#	@echo "Compiling $< ..."
 	@$(CC) $(CFLAGS) -MMD -c $< -o $@
 
 

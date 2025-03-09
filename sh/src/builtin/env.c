@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 10:34:51 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/07 10:45:53 by monoguei         ###   ########.fr       */
+/*   Created: 2025/03/07 14:13:15 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/09 20:18:47 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	b_pwd(void)
+void	b_env(t_data *data)
 {
-	ft_putendl_fd(getcwd(NULL, 0), 1);
+    t_env *current;
+	
+	current = (t_env *)data->env;
+    while (current)
+    {
+        printf("%s=%s\n", current->name, current->value);// ft_str_fd plutot ?
+        current = current->next;
+    }
 }
