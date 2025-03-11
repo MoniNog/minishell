@@ -6,11 +6,11 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:13:15 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/09 20:28:24 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:39:52 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../../minishell.h"
 
 void	b_env(t_data *data)
 {

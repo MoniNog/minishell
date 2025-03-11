@@ -6,12 +6,11 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 20:22:09 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/10 10:35:38 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:39:54 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
-
+#include "../../../minishell.h"
 
 void b_cd(t_data *data, char *arg)
 {

@@ -28,7 +28,6 @@ $(OBJDIR)/%.o: src/%.c
 #	@echo "Compiling $< ..."
 	@$(CC) $(CFLAGS) -MMD -c $< -o $@
 
-
 # S'assurer que obj/ existe
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)

@@ -6,11 +6,11 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:34:51 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/07 10:45:53 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/11 21:39:47 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../../minishell.h"
 
 void	b_pwd(void)
 {
