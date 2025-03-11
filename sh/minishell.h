@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/06 17:44:55 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:19:22 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ typedef struct s_token
 {
 	char			*token;
 	t_token_type	type;
-	struct token	*next;
-	struct token	*prev;
+	struct s_token	*next;
+	struct s_token	*prev;
 }					t_token;
 
 // fonctions parsing
@@ -49,14 +49,14 @@ char				**second_parsing(char **array);
 void				first_word(char **input, char **env);
 char				**parse_input(char *input);
 char				**fill_second_tab(char **array, char **tab_token);
-int					handle_non_operator(char **tab_token, char *array,
-						int *index);
-void				handle_operator(char **tab_token, char **array, int *index,
-						int i);
+int					handle_non_operator(char **tab_token, char *array, int *index);
+void				handle_operator(char **tab_token, char **array, int *index, int i);
 
 // fonctions token
 
 int					is_cmd(char *token, char **env);
+t_token				*tokenize(char **input);
+t_token_type	get_token_type(t_token *token, char *input);
 // void	env_token(char *token);
 // void	operator_token(char *token);
 // void	word_token(char *token);

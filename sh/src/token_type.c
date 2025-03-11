@@ -6,13 +6,13 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 14:51:39 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/06 17:49:23 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:42:14 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-void	word_token(char *input, char **env, int i)
+/*void	word_token(char *input, char **env, int i)
 {
 	if(is_cmd(input, env))
 	{
@@ -64,7 +64,7 @@ void	string_token(char *input, int i)
 {
 
 }
-
+*/
 int	is_cmd(char *token, char **env)
 {
 	char	*path;

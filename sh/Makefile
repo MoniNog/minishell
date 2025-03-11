@@ -15,7 +15,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(OBJS) -o $@ $(CFLAGS) -L$(LIBFT_PATH) -l:libft.a $(LDFLAGS)
+	@$(CC) $(OBJS) -o $@ $(CFLAGS) -L$(LIBFT_PATH) -lft $(LDFLAGS)
 
 $(LIBFT):
 	@echo "Building libft ..."
