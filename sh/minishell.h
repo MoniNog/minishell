@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/11 11:55:10 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:59:27 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,21 @@ char	**fill_second_tab(char **array, char **tab_token);
 int		handle_non_operator(char **tab_token, char *array, int *index);
 void	handle_operator(char **tab_token, char **array, int *index, int i);
 
-
 // fonctions token
-
 int		is_cmd(char *token, char **env);
 //void	env_token(char *token);
 //void	operator_token(char *token);
 //void	word_token(char *token);
 
 // fonctions path
-
 char	**ft_split_path(char *fullpath);
 char	*ft_find_executable(char **path, char *cmd);
 char	*ft_get_path(char *fullpath, char *cmd);
 char	*ft_get_env_path(char **env);
 
-
-void	cleanup_memory(char *line, char **splited_line);
-
 // fonctions utils
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	cleanup_memory(char *line, char **splited_line);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 //MAIN
 // void	display_input(char **splited_line);
