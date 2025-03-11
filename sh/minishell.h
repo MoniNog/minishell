@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/10 12:29:14 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/11 11:55:10 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_data
 	t_env		**env;// tableau envp
 	int			exit_status;
 }				t_data;
+
+
 // signals.c
 __sighandler_t handler_sigint(void);
 void init_signals(void);
