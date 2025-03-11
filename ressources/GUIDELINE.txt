@@ -36,7 +36,7 @@ OK	[Moni] Have a working history (you can navigate through commands with up/down
 		[x] — env (with no options or arguments)
 		[ ] — export (with no options)
 		[ ] — unset (with no options)
-		[ ] — cd
+		[x] — cd
 		[x] — pwd (a mod apres env)
 
 __moni__

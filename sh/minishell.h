@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/09 20:43:00 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:29:14 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@
 # include <stdbool.h>
 
 
-typedef struct s_envp
-{
-	char	**envp;
-}			t_envp;
-
-void	echo(char *input);
-
-// signals.c
-__sighandler_t handler_sigint(void);
-void init_signals(void);
-void restore_terminal(void);
 typedef enum
 {
 	CMD,
@@ -58,15 +47,24 @@ typedef struct s_env
 	struct s_env	*next;
 }					t_env;
 
+typedef struct s_input
+{
+	char	*CMD;
+	char	*ARG;
+}	t_input;
+
 typedef struct s_data
 {
-	char		**input;// ligne de commande
+	t_input		**input;// ligne de commande
 	t_env		**env;// tableau envp
 	int			exit_status;
 }				t_data;
+// signals.c
+__sighandler_t handler_sigint(void);
+void init_signals(void);
+void restore_terminal(void);
+
 // fonctions parsing
-
-
 char	**fill_tab(char *input, char **array);
 void	if_n_op(char *input, char **array, int *k, int *i);
 void	if_operator(char *input, char **array, int *k, int i);

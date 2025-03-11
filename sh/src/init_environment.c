@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_environnement.c                               :+:      :+:    :+:   */
+/*   init_environment.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/09 20:16:35 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/11 08:58:53 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+// HELP ELISE
 t_env *create_env_var(char *env_var)
 {
     t_env	*env;
