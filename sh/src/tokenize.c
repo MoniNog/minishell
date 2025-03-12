@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/07 17:30:44 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:49:08 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void	first_word(char **input, char **env)
 		exit(127);
 	}
 	else
+	{
 		//		word_token(input[0]);
-		printf("else");
+		printf("cmd\n");
+//		head->type = T_CMD;
+	}
 }
 
 t_token	*tokenize(char **input)
@@ -63,6 +66,7 @@ t_token	*tokenize(char **input)
 		current->type = get_token_type(current, current->token);
 		current = current->next;
 	}
+	is_cmd_arg(head);
 	return (head);
 }
 
@@ -76,10 +80,22 @@ t_token_type	get_token_type(t_token *token, char *input)
 	else if (input[0] == '$')
 		return (T_ENV);
 	else if (token->prev != NULL && token->prev->type == T_OP)
-		return T_FILE;
+		return (T_FILE);
 	else if (token->prev != NULL && (token->prev->type == T_CMD || token->prev->type == T_ARG
 			|| token->prev->type == T_ENV))
 		return (T_ARG);
 	return (T_CMD);
 }
 
+void	is_cmd_arg(t_token *token)
+{
+	t_token	*curr;
+
+	curr = token;
+	while (curr)
+	{
+		if (curr->type == T_CMD && curr->next && curr->next->type == T_ARG)
+			curr->type = T_CMD_ARG;
+		curr = curr->next;
+	}
+}

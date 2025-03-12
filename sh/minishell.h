@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/07 17:19:22 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/11 15:49:40 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef enum s_token_type
 {
 	T_CMD,
+	T_CMD_ARG,
 	T_ARG,
 	T_FILE,
 	T_ENV,
@@ -56,7 +57,8 @@ void				handle_operator(char **tab_token, char **array, int *index, int i);
 
 int					is_cmd(char *token, char **env);
 t_token				*tokenize(char **input);
-t_token_type	get_token_type(t_token *token, char *input);
+t_token_type		get_token_type(t_token *token, char *input);
+void				is_cmd_arg(t_token *token);
 // void	env_token(char *token);
 // void	operator_token(char *token);
 // void	word_token(char *token);
