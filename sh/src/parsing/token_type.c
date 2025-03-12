@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   token_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 14:51:39 by lylrandr          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/03/11 21:39:17 by monoguei         ###   ########.fr       */
+=======
+/*   Updated: 2025/03/12 14:07:48 by lylrandr         ###   ########.fr       */
+>>>>>>> c5928a2 (ajout token)
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+<<<<<<< HEAD
 /*void	word_token(char *input, char **env, int i)
 {
 	if(is_cmd(input, env))
@@ -65,6 +70,8 @@ void	string_token(char *input, int i)
 
 }
 */
+=======
+>>>>>>> c5928a2 (ajout token)
 int	is_cmd(char *token, char **env)
 {
 	char	*path;

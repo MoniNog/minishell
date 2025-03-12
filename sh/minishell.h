@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/11 21:45:48 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:32:47 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,37 @@
 # include <stddef.h>
 # include <stdbool.h>
 
+
+typedef struct s_envp
+{
+	char	**envp;
+}			t_envp;
+
+void	echo(char *input);
+
+// signals.c
+__sighandler_t handler_sigint(void);
+void init_signals(void);
+void restore_terminal(void);
+
 typedef enum s_token_type
 {
 	T_CMD,
+	T_CMD_ARG,
 	T_ARG,
 	T_FILE,
 	T_ENV,
 	T_OP,
 	T_PIPE
-}				t_token_type;
+}			t_token_type;
 
 typedef struct s_token
 {
+	char			*token;
+	t_token_type	type;
+	struct s_token	*next;
+	struct s_token	*prev;
+}					t_token;
 	char			*token;
 	t_token_type	type;
 	struct s_token	*next;
@@ -78,12 +97,11 @@ int					handle_non_operator(char **tab_token, char *array, int *index);
 void				handle_operator(char **tab_token, char **array, int *index, int i);
 
 // fonctions token
-int					is_cmd(char *token, char **env);
-t_token				*tokenize(char **input);
+
+int		is_cmd(char *token, char **env);
+t_token	*tokenize(char **input);
 t_token_type	get_token_type(t_token *token, char *input);
-// void	env_token(char *token);
-// void	operator_token(char *token);
-// void	word_token(char *token);
+void	is_cmd_arg(t_token *token);
 
 // fonctions path
 char				**ft_split_path(char *fullpath);
