@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/12 14:32:47 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/12 14:37:17 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ typedef enum s_token_type
 
 typedef struct s_token
 {
-	char			*token;
-	t_token_type	type;
-	struct s_token	*next;
-	struct s_token	*prev;
-}					t_token;
 	char			*token;
 	t_token_type	type;
 	struct s_token	*next;
