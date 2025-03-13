@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 17:51:30 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:53:24 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	t_input		**input;// ligne de commande
 	t_env		**env;// tableau envp
+	t_input		**token;
 	int			exit_status;
 }				t_data;
 
@@ -127,7 +127,10 @@ t_env *create_env_var(char *env_var);
 t_env *convert_envp(char **envp);
 void init_env(t_data *data, char **envp);
 
-//utils.c
+// init_arg
+void init_input(t_input *input);
+
+// utils.c
 int	ft_strncmp(const char *first, const char *second, size_t len);
 
 #endif
