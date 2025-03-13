@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:07:22 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 17:51:23 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:56:27 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void	cleanup_memory(char *line, char **splited_line)
+{
+	int	j;
+
+	free(line);
+	j = 0;
+	while (splited_line[j])
+	{
+		free(splited_line[j]);
+		j++;
+	}
+	free(splited_line);
+}
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

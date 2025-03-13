@@ -3,28 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/13 17:14:31 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:56:16 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	cleanup_memory(char *line, char **splited_line)
-{
-	int	j;
-
-	free(line);
-	j = 0;
-	while (splited_line[j])
-	{
-		free(splited_line[j]);
-		j++;
-	}
-	free(splited_line);
-}
 // // implique quon sait deja que cest une c
 // // int	is_a_builtin(char *cmd)
 

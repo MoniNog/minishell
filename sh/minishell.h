@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 18:53:24 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:56:01 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,25 +107,26 @@ void	print_token_type(t_input *token);
 void	print_all_token_types(t_input *head);
 void	print_tokens(char **tokens);
 
-// fonctions exec + moni
+// FONCTIONS EXEC + MONI
 // signals.c
 __sighandler_t handler_sigint(void);
-void init_signals(void);
-void restore_terminal(void);
+void	init_signals(void);
+void	restore_terminal(void);
 
-// fonctions utils
-void cleanup_memory(char *line, char **splited_line);
+// utils.c
+void	cleanup_memory(char *line, char **splited_line);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-// Builtin
-void b_echo(char **input);
-void b_pwd(void);
-void b_env(t_data *data);
-void b_cd(t_data *data, char *arg);
+// /builtin
+void	b_echo(char **input);
+void	b_pwd(void);
+void	b_env(t_data *data);
+void	b_cd(t_data *data, char *arg);
 
 // init_environment
-t_env *create_env_var(char *env_var);
-t_env *convert_envp(char **envp);
-void init_env(t_data *data, char **envp);
+t_env	*create_env_var(char *env_var);
+t_env	*convert_envp(char **envp);
+void	init_env(t_data *data, char **envp);
 
 // init_arg
 void init_input(t_input *input);
