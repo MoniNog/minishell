@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloras <afloras@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:57:29 by afloras           #+#    #+#             */
-/*   Updated: 2024/01/27 15:57:30 by afloras          ###   ########.fr       */
+/*   Updated: 2025/03/13 09:03:28 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
