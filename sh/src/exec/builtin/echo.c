@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 09:59:39 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/11 21:39:53 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/14 10:20:42 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,7 @@ void	b_echo(char **input)
 	}
 	
 }
+
+[ ] gestion plusieurs n
+[ ] adapter avec token CMD_ARG et CMD
+[ ] commenter la fonction !

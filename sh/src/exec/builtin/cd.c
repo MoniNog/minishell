@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 20:22:09 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/11 21:39:54 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/14 09:11:31 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void b_cd(t_data *data, char *arg)
 
 	temp_pwd = NULL;
 		
-	current = (t_env *)data->env;
-	head = (t_env *)data->env;
+	current = data->env;
+	head = data->env;
 
 	while (current && ft_strncmp(current->name, "PWD", 3) != 0)
 		current = current->next;

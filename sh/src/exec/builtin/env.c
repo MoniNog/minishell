@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:13:15 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/11 21:39:52 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/14 09:08:43 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	b_env(t_data *data)
 {
-    t_env *current;
+	t_env *current;
 	
 	current = (t_env *)data->env;
-    while (current)
-    {
-        printf("%s=%s\n", current->name, current->value);// ft_str_fd plutot ?
-        current = current->next;
-    }
+	while (current)
+	{
+		printf("%s=%s\n", current->name, current->value);// ft_str_fd plutot ?
+		current = current->next;
+	}
 }

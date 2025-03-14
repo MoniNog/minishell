@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/12 18:03:11 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:57:53 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,7 @@ void init_env(t_data *data, char **envp)
 	data->env = (t_env **)convert_envp(envp);
 }
 
+[ ] decomposer ligne par ligne sur papier -> schema de la vue densemble de la fonction 
+[ ] comprendre
+[ ] reecrire 
+[ ] commenter les protypes de la libft

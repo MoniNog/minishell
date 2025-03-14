@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/17 18:56:16 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:59:04 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,26 +101,26 @@ char	*get_user_input(const char *prompt)
 	return (line);
 }
 
-int	tester_echo(void)
-{
-	char	**input;
+// int	tester_echo(void)
+// {
+// 	char	**input;
 
-	// t_data	*data;
-	input = malloc(sizeof(char *) * 4);
-	input[0] = "Elise";
-	input[1] = "a";
-	input[2] = "raison";
-	input[3] = NULL;
-	b_echo(input);
-	free(input);
-	return (0);
-}
+// 	// t_data	*data;
+// 	input = malloc(sizeof(char *) * 4);
+// 	input[0] = "Elise";
+// 	input[1] = "a";
+// 	input[2] = "raison";
+// 	input[3] = NULL;
+// 	b_echo(input);
+// 	free(input);
+// 	return (0);
+// }
 
-int	tester_pwd(void)
-{
-	b_pwd();
-	return (0);
-}
+// int	tester_pwd(void)
+// {
+// 	b_pwd();
+// 	return (0);
+// }
 
 void	tester_env(char **envp)
 {
@@ -128,6 +128,7 @@ void	tester_env(char **envp)
 
 	data = malloc(sizeof(t_data));
 	init_env(data, envp);
+	b_env(data);
 }
 
 void	tester_cd(char **envp)
@@ -165,6 +166,7 @@ int	main(int ac, char **av, char **envp)
 		print_tokens(splited_input);
 		head = tokenize(splited_input);
 		first_word(splited_input, envp);
+		tester_env(envp);
 		print_all_token_types(head);
 //		display_input(splited_input);
 		restore_terminal();
@@ -172,7 +174,5 @@ int	main(int ac, char **av, char **envp)
 		cleanup_memory(input, splited_input);
 		init_signals();
 	}
-	tester_env(envp);
-	tester_cd(envp);
 	return (0);
 }
