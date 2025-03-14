@@ -3,81 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 15:00:09 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/02/26 15:23:11 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/08 21:04:15 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:00 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ifneg(char const *s, unsigned int start)
+// créer une sous-chaîne à partir d'une chaîne donnée de len longueur
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	unsigned int	j;
-	char			*str;
-
-	j = 0;
-	i = ft_strlen(s);
-	if (start >= i)
-	{
-		str = malloc(sizeof(char) * 1);
-		if (!str)
-			return (NULL);
-		str[0] = '\0';
-		return (str);
-	}
-	i -= start;
-	str = malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (NULL);
-	while (j < i)
-	{
-		str[j] = s[start + j];
-		j++;
-	}
-	str[j] = '\0';
-	return (str);
-}
-
-static char	*fillstr(char const *s, unsigned int start, size_t len, char *str)
-{
+	char	*substr;
+	size_t	s_len;
 	size_t	i;
 
 	i = 0;
-	while (i < (unsigned int)len)
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return (ft_strdup(""));
+	if (s_len - start < len)
+		len = s_len - start;
+	substr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	while (i < len && (start + i) < s_len && s[start + i] != '\0')
 	{
-		str[i] = s[start];
-		start++;
+		substr[i] = s[start + i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-	size_t	j;
-
-	j = ft_strlen(s);
-	if (len > j)
-	{
-		str = ifneg(s, start);
-		return (str);
-	}
-	if (start >= j)
-	{
-		str = malloc(sizeof(char) * 1);
-		if (!str)
-			return (NULL);
-		str[0] = '\0';
-		return (str);
-	}
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	str = fillstr(s, start, len, str);
-	return (str);
+	substr[i] = 0;
+	return (substr);
 }

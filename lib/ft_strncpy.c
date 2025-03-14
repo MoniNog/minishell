@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 16:12:12 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/14 16:54:26 by monoguei         ###   ########.fr       */
+/*   Created: 2023/11/07 15:22:01 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:40 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *ptr, int value, size_t count);
-
-// met à zéro ('/0') les n premiers bytes du bloc de mémoire pointé par s
-void	ft_bzero(void *s, size_t n)
+// copie n caracteres
+char	*ft_strncpy(char *dest, const char *src, size_t size)
 {
-	ft_memset(s, 0, n);
+	int	i;
+
+	i = 0;
+	while (src[i] != 0 && size > 0)
+	{
+		dest[i] = src[i];
+		i++;
+		size--;
+	}
+	dest[i] = 0;
+	return (dest);
 }
-
-/*#include <stdio.h>
-int	main(void)
-{
-	void	*s = malloc (sizeof"lily");
-	size_t	n = 4;
-	printf("%s", ft_bzero(s, n));
-	return (0);
-}*/

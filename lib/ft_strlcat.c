@@ -1,42 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 14:10:20 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:21:58 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 15:29:26 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:49:10 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+// Concatène des chaînes de caractères en prenant en compte la taille totale du 
+// buffer de destination pour éviter les dépassements de mémoire.
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
+	size_t	src_len;
+	size_t	dest_len;
 	size_t	i;
-	size_t	j;
-	size_t	k;
 
-	j = 0;
+	src_len = ft_strlen(src);
+	dest_len = ft_strlen(dest);
 	i = 0;
-	while (dst[i])
-		i++;
-	k = i;
-	if (dstsize <= k)
+	if (size <= dest_len)
+		return (src_len + size);
+	while (src[i] != 0 && (dest_len + i) < (size - 1))
 	{
-		while (src[j])
-			j++;
-		return (dstsize + j);
-	}
-	while (src[j] && i < dstsize - 1)
-	{
-		dst[i] = src[j];
+		dest[dest_len + i] = src[i];
 		i++;
-		j++;
 	}
-	while (src[j])
-		j++;
-	dst[i] = '\0';
-	return (k + j);
+	if (size > 0)
+		dest[dest_len + i] = 0;
+	return (dest_len + src_len);
 }

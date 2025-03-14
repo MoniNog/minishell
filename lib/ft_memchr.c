@@ -3,27 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 13:43:27 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:23:19 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:35:54 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:47 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// Recherche le premier octet dans les n premiers octets du bloc pointé par s 
+// qui est égal à c.
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	*str;
+	const unsigned char	*ptr;
+	unsigned char		ch;
 
-	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
+	ptr = (const unsigned char *)s;
+	ch = (unsigned char)c;
+	while (n > 0)
 	{
-		if (str[i] == (unsigned char)c)
-			return (str + i);
-		i++;
+		if (*ptr == ch)
+			return ((void *)ptr);
+		ptr++;
+		n--;
 	}
-	return (0);
+	return (NULL);
 }

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 16:41:04 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:22:23 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 15:32:17 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:13 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// majuscule en minuscule 		A -> a
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	else
-		return (c);
+	if ((c >= 'A' && c <= 'Z'))
+		c = c + 32;
+	return (c);
 }

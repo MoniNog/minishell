@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:50:55 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/07 15:49:10 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:19:52 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:54:14 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// vérifie si un entier est un caractère alphabetiquenumerique
+int	ft_isalpha(int c);
+int	ft_isdigit(int c);
+
 int	ft_isalnum(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
-		|| (c >= '0' && c <= '9'))
-		return (1);
-	else
+	if (!(ft_isdigit(c) || ft_isalpha(c)))
 		return (0);
+	return (1);
 }

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:56:58 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/08 10:54:48 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:25:05 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:57 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+// vérifie si un entier est un caractère imprimable
+int	ft_isprint(int character)
 {
-	if (c >= 32 && c <= 126)
+	if (32 <= character && character < 127)
 		return (1);
-	else
-		return (0);
+	return (0);
 }

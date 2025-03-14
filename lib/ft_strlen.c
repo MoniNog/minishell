@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:58:19 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:18:16 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 16:12:50 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:50 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+// compte nombre de caracteres d'une string
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i] != 0)
 		i++;
 	return (i);
 }

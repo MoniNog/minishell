@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 13:48:06 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 15:43:46 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:49:34 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:38 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+// Copie n octets de src à dest, sans se préoccuper des octets nuls.
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
 	while (i < n)
 	{
-		((char *)dst)[i] = ((char *)src)[i];
+		((char *)dest)[i] = ((char *)src)[i];
 		i++;
 	}
-	return (dst);
+	return (dest);
 }

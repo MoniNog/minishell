@@ -3,39 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 13:49:18 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/10 16:57:14 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:51:58 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:35 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+// Copie n octets de src vers dest avec gestion de chevauchement.
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	char		*dest_p;
+	const char	*src_p;
 
-	i = 0;
-	if (dst == src || len == 0)
-		return (dst);
-	if (dst < src)
+	dest_p = (char *)dest;
+	src_p = (const char *)src;
+	if (dest_p < src_p)
 	{
-		while (i < len)
+		while (n > 0)
 		{
-			((char *)dst)[i] = ((char *)src)[i];
-			i++;
+			*dest_p = *src_p;
+			dest_p++;
+			src_p++;
+			n--;
 		}
-		return (dst);
 	}
-	else
+	dest_p = dest_p + n - 1;
+	src_p = src_p + n - 1;
+	while (n > 0)
 	{
-		i = len;
-		while (i > 0)
-		{
-			i--;
-			((char *)dst)[i] = ((char *)src)[i];
-		}
-		return (dst);
+		*dest_p = *src_p;
+		dest_p--;
+		src_p--;
+		n--;
 	}
+	return (dest);
 }

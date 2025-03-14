@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 15:25:09 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:26:21 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/08 21:06:54 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:58 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// colle des strings ensembles
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
-	char	*str;
+	size_t	total_len;
+	size_t	i;
+	size_t	j;
+	char	*s3;
 
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
-	str = malloc(sizeof(char) * (i + j + 1));
-	if (!str)
+	total_len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	s3 = malloc(total_len);
+	if (s3 == NULL)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (s1[i])
+	while (s1[i] != 0)
 	{
-		str[i] = s1[i];
+		s3[i] = s1[i];
 		i++;
 	}
-	while (s2[j])
+	j = 0;
+	while (s2[j] != 0)
 	{
-		str[i] = s2[j];
-		i++;
+		s3[i + j] = s2[j];
 		j++;
 	}
-	str[i] = '\0';
-	return (str);
+	s3[i + j] = 0;
+	return (s3);
 }

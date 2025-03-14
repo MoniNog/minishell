@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 18:57:10 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:00:06 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	t_env		**env;// tableau envp
-	t_input		**token;
+	t_token		**input;// ligne de commande
+	t_env		*env;// tableau envp
+	char		**copy_env;
 	int			exit_status;
 }				t_data;
 

@@ -3,23 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 13:44:58 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/11 15:41:52 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:39:30 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:43 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// Compare les n premiers octets entre s1 et s2. 
+// Retourne 0 si identiques, un nombre négatif ou positif sinon.
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	const unsigned char	*ptr_s1;
+	const unsigned char	*ptr_s2;
 
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (((unsigned char *)s1)[i] == ((unsigned char *)s2)[i] && i < n - 1)
-		i++;
-	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+	ptr_s1 = (const unsigned char *)s1;
+	ptr_s2 = (const unsigned char *)s2;
+	while (n > 0)
+	{
+		if (*ptr_s1 == *ptr_s2)
+		{
+			ptr_s1++;
+			ptr_s2++;
+			n--;
+		}
+		else
+			return (*ptr_s1 - *ptr_s2);
+	}
+	return (0);
 }

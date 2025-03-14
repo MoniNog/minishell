@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 16:12:12 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/14 16:54:26 by monoguei         ###   ########.fr       */
+/*   Created: 2023/10/27 16:04:12 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:54 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *ptr, int value, size_t count);
-
-// met à zéro ('/0') les n premiers bytes du bloc de mémoire pointé par s
-void	ft_bzero(void *s, size_t n)
+// verifie si un entier est un caracter de type "espace blanc"
+int	ft_iswhitespace(int c)
 {
-	ft_memset(s, 0, n);
+	if (!(c == 32 || c == 9 || c == 10 || c == 13))
+		return (0);
+	return (1);
 }
-
-/*#include <stdio.h>
-int	main(void)
-{
-	void	*s = malloc (sizeof"lily");
-	size_t	n = 4;
-	printf("%s", ft_bzero(s, n));
-	return (0);
-}*/

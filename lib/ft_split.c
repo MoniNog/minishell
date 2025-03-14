@@ -3,153 +3,101 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@lausanne42.ch>          +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 12:34:00 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/02/27 08:59:01 by monoguei         ###   ########.fr       */
+/*   Created: 2023/11/17 14:20:24 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:51:24 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*createstr(char const *s, size_t len, size_t i)
+// alloue de la memoire et separe une string en plusieurs strings
+static void	ft_initiate_vars(size_t *i, int *j, int *s_word)
 {
-    char	*str;
-    size_t	n;
-
-    n = 0;
-    str = malloc(sizeof(char) * (len + 1));
-    if (!str)
-        return (NULL);
-    while (n != len)
-    {
-        str[n] = s[i];
-        i++;
-        n++;
-    }
-    str[n] = '\0';
-    return (str);
+	*i = 0;
+	*j = 0;
+	*s_word = -1;
 }
 
-static int	cword(char const *s, char c)
+static void	*ft_free(char **strs, int count)
 {
-    size_t	i;
-    size_t	count;
-    int		j;
+	int	i;
 
-    i = 0;
-    j = 0;
-    count = 0;
-    while (s[i])
-    {
-        if (s[i] != c && j == 0)
-        {
-            count++;
-            j = 1;
-        }
-        if (s[i] == c)
-            j = 0;
-        i++;
-    }
-    return (count);
+	i = 0;
+	while (i < count)
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
+	return (NULL);
 }
 
-static char	**ifone(char const *s, char c)
+static char	*fill_word(const char *str, int start, int end)
 {
-    size_t	len;
-    size_t	i;
-    size_t	ii;
-    char	**tab;
+	char	*word;
+	int		i;
 
-    len = 0;
-    i = 0;
-    tab = (char **)malloc(sizeof(char *) * 2);
-    if (!tab)
-        return (NULL);
-    while (s[i] == c)
-        i++;
-    ii = i;
-    while (s[ii] != c && s[ii++])
-        len++;
-    tab[0] = createstr(s, len, i);
-    tab[1] = NULL;
-    return (tab);
+	i = 0;
+	word = malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	while (start < end)
+	{
+		word[i] = str[start];
+		i++;
+		start++;
+	}
+	word[i] = 0;
+	return (word);
 }
 
-static char	**filltab(char const *s, char c, char **tab, size_t count)
+static int	word_count(const char *str, char c)
 {
-    size_t	u;
-    size_t	j;
-    size_t	len;
-    size_t	i;
-    size_t	ii;
+	int	count;
+	int	x;
 
-    u = 0;
-    j = 0;
-    i = 0;
-    while (u < count)
-    {
-        if (s[i] != c && j == 0)
-        {
-            ii = i;
-            len = 0;
-            while (s[ii] != c && s[ii])
-            {
-                len++;
-                ii++;
-            }
-            tab[u++] = createstr(s, len, i);
-            j = 1;
-        }
-        if (s[i] == c)
-            j = 0;
-        i++;
-    }
-    return (tab);
+	count = 0;
+	x = 0;
+	while (*str)
+	{
+		if (*str != c && x == 0)
+		{
+			x = 1;
+			count++;
+		}
+		else if (*str == c)
+			x = 0;
+		str++;
+	}
+	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
-    size_t	count;
-    char	**tab;
+	char	**res;
+	size_t	i;
+	int		j;
+	int		s_word;
 
-    if (!s)
-        return (NULL);
-    count = cword(s, c);
-    if (count == 1)
-    {
-        tab = ifone(s, c);
-        return (tab);
-    }
-    tab = (char **)malloc(sizeof(char *) * (count + 1));
-    if (!tab)
-        return (NULL);
-    tab = filltab(s, c, tab, count);
-    tab[count] = NULL;
-    return (tab);
+	ft_initiate_vars(&i, &j, &s_word);
+	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
+	if (!res)
+		return (NULL);
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && s_word < 0)
+			s_word = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
+		{
+			res[j] = fill_word(s, s_word, i);
+			if (!(res[j]))
+				return (ft_free(res, j));
+			s_word = -1;
+			j++;
+		}
+		i++;
+	}
+	return (res);
 }
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int main() {
-//     char *input = "lorem ipsum dolor sit amet.";
-//     char delimiter = ' ';
-//     char **tabstr;
-//     int i = 0;
-
-//     tabstr = ft_split(input, delimiter);
-
-//     if (!tabstr) {
-//         printf("Erreur lors de la séparation.\n");
-//         return 1;
-//     }
-
-//     while (tabstr[i] != NULL) {
-//         printf("%s\n", tabstr[i]);
-//         free(tabstr[i]);
-//         i++;
-//     }
-
-//     free(tabstr);
-//     return 0;
-// }

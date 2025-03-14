@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 16:31:53 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:22:15 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 15:33:43 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:09 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// minuscule en majuscule 		a -> A
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	if ((c >= 'a' && c <= 'z'))
+		c = c - 32;
+	return (c);
 }

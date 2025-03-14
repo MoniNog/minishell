@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 12:49:58 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 14:19:51 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:04:06 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:54:00 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// verifie si un entier est un caractere numerique
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
+	if (!(c >= '0' && c <= '9'))
 		return (0);
+	return (1);
 }

@@ -3,102 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 16:51:17 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/02/26 15:24:00 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 15:23:06 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:50 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	length(int n)
+// conversion int -> ASCII
+static int	ft_intlen(int n)
 {
-	int	size;
+	int	len;
 
-	size = 0;
+	if (n <= 0)
+		len = 1;
+	else
+		len = 0;
+	while (n != 0)
+	{
+		len++;
+		n = n / 10;
+	}
+	return (len);
+}
+
+static void	fill_str(char *ptr, int n)
+{
+	int	size_char;
+
+	size_char = ft_intlen(n);
+	ptr[size_char--] = '\0';
+	if (n == 0)
+	{
+		ptr[0] = '0';
+		return ;
+	}
 	if (n < 0)
 	{
-		n *= -1;
-		size++;
+		ptr[0] = '-';
+		if (n == -2147483648)
+		{
+			ptr[size_char--] = '8';
+			n /= 10;
+		}
+		n = -n;
 	}
 	while (n != 0)
 	{
-		n = n / 10;
-		size++;
+		ptr[size_char--] = '0' + (n % 10);
+		n /= 10;
 	}
-	return (size);
-}
-
-static char	*intmin(char *str)
-{
-	int		i;
-	char	*s;
-
-	i = 0;
-	s = "-2147483648";
-	str = malloc(sizeof(char) * 12);
-	if (!str)
-		return (NULL);
-	while (i < 12)
-	{
-		str[i] = s[i];
-		i++;
-	}
-	return (str);
-}
-
-static char	*ifzero(char *str)
-{
-	str = malloc(sizeof(char) * 2);
-	if (!str)
-		return (NULL);
-	str[0] = '0';
-	str[1] = '\0';
-	return (str);
-}
-
-static char	*fillstr(int n, char *str, int size)
-{
-	int	i;
-
-	i = 0;
-	if (n < 0)
-	{
-		str[0] = '-';
-		n *= -1;
-	}
-	str[size] = '\0';
-	i = size - 1;
-	while (n != 0)
-	{
-		str[i] = n % 10 + '0';
-		n = n / 10;
-		i--;
-	}
-	return (str);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		size;
+	char	*ptr;
+	int		size_char;
 
-	size = length(n);
-	str = NULL;
-	if (n == 0)
-	{
-		str = ifzero(str);
-		return (str);
-	}
-	if (n == -2147483648)
-	{
-		str = intmin(str);
-		return (str);
-	}
-	str = malloc(sizeof(char) * (size + 1));
-	if (!str)
+	size_char = ft_intlen(n);
+	ptr = malloc(sizeof(char) * (size_char + 1));
+	if (!ptr)
 		return (NULL);
-	str = fillstr(n, str, size);
-	return (str);
+	fill_str(ptr, n);
+	return (ptr);
 }

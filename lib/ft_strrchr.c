@@ -3,39 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 12:10:53 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/08 17:21:24 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 16:13:55 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:25 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+// recherche la derniere occurence du searchedChar
+char	*ft_strrchr(const char *str, int searchedChar)
 {
-	int	i;
+	int	len;
 
-	i = 0;
-	while (s[i])
-		i++;
-	while (i >= 0)
+	len = ft_strlen(str);
+	if (str[len] == (char)searchedChar)
+		return ((char *)&str[len]);
+	while (len >= 0)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i--;
+		if (str[len] == (char)searchedChar)
+			return ((char *)&str[len]);
+		len--;
 	}
-	return (0);
+	return (NULL);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int	main()
-{
-	char s1[] = "abbbbb";
-	char s2[] = "abbbbb";
-
-	printf("%s\n", strrchr(s1, 'a'));
-	printf("%s\n", ft_strrchr(s2, 'a'));
-	return (0);
-}*/

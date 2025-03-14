@@ -3,33 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 13:05:28 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:21:32 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 15:34:25 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:49:40 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+// Copie une chaîne de caractères d'une source vers une destination en évitant 
+// les problèmes de dépassement de mémoire.
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
-	size_t	j;
+	size_t	src_len;
 
 	i = 0;
-	j = 0;
-	j = ft_strlen(src);
-	if (dstsize == 0)
-		return (j);
-	if (dstsize != 0)
+	src_len = ft_strlen(src);
+	if (!src || !dest)
+		return (0);
+	if (size == 0)
+		return (src_len);
+	while (size - 1 > i && src_len > i)
 	{
-		while (i < (dstsize - 1) && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dest[i] = src[i];
+		i++;
 	}
-	return (j);
+	if (size > 0)
+		dest[i] = 0;
+	return (src_len);
 }

@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 16:43:13 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:22:44 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:57:53 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:51:15 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+// Recherche la première occurrence de searchedChar dans la str passée en param.
+char	*ft_strchr(const char *str, int searchedChar)
 {
-	int	i;
+	size_t	i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
-	if ((char)c == '\0')
+	while (str[i])
 	{
-		while (s[i])
-			i++;
-		return ((char *)s + i);
-	}
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
+		if ((unsigned char)str[i] == (unsigned char)searchedChar)
+			return ((char *)&str[i]);
 		i++;
 	}
+	if (searchedChar == 0)
+		return ((char *)&str[i]);
 	return (NULL);
 }

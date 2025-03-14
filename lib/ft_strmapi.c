@@ -3,31 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/20 19:31:32 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:28:02 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/08 21:11:35 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:46 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
+// copie une string en appliquant la fonction f
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	int		j;
-	char	*str;
+	char	*s2;
+	size_t	i;
 
 	i = 0;
-	j = ft_strlen(s);
-	str = malloc(sizeof(char) * (j + 1));
-	if (!str)
+	if (s == NULL || f == NULL)
 		return (NULL);
-	while (i < j)
+	s2 = malloc(ft_strlen(s) + 1);
+	while (s[i])
 	{
-		str[i] = (*f)((unsigned int)i, s[i]);
+		s2[i] = f(i, s[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	s2[i] = 0;
+	return (s2);
 }

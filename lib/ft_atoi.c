@@ -3,38 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 13:53:18 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:24:27 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/10/27 16:14:34 by monoguei          #+#    #+#             */
+/*   Updated: 2025/03/14 16:54:48 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	ft_isdigit(int character);
+
+static int	ft_iswhitespace(int c)
+{
+	if (c == 32 || c == 9 || c == 10 || c == 11 || c == 12 || c == 13)
+	return (1);
+	return (0);
+}
+
+// convertir char en int
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	neg;
-	int	res;
+	int	minus;
+	int	nb;
 
 	i = 0;
-	neg = 1;
-	res = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || str[i] == '\f'
-		|| str[i] == '\r' || str[i] == ' ')
+	minus = 1;
+	nb = 0;
+	while (ft_iswhitespace(str[i]))
 		i++;
-	if (str[i] == '+')
+	if (str[i] == '+' && str[i + 1] != '-')
 		i++;
-	else if (str[i] == '-')
+	if (str[i] == '-')
 	{
-		neg *= -1;
+		minus = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] && ft_isdigit(str[i]))
 	{
-		res = res * 10 + (str[i] - '0');
+		nb = (nb * 10) + str[i] - 48;
 		i++;
 	}
-	return (neg * res);
+	return (minus * nb);
 }
+/*
+int	main(void)
+{
+	printf("%d", ft_atoi("+1"));
+	return (0);
+}*/

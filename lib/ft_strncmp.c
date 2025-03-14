@@ -5,31 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 12:27:05 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/02/28 09:34:53 by monoguei         ###   ########.fr       */
+/*   Created: 2023/11/07 15:27:51 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:49:52 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp_end(const char *s1, const char *s2, size_t n)
+// compare n caracteres entre deux strings
+int	ft_strncmp(const char *first, const char *second, size_t len)
 {
 	size_t	i;
 
 	i = 0;
-	if (n == 0)
-		return (0);
-	if (ft_strlen(s1) == (int)n)
+	while (i < len)
 	{
-		while (s1[i] && s2[i] && n > 1)
-		{
-			if (s1[i] != s2[i])
-				return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-			i++;
-			n--;
-		}
-		return (0);
+		if (first[i] != second[i] || first[i] == '\0' || second[i] == '\0')
+			return ((unsigned char)first[i] - (unsigned char)second[i]);
+		i++;
 	}
-	else
-		return (-1);
+	return (0);
 }

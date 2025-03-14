@@ -3,38 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 12:35:37 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 16:23:54 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/07 16:14:30 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:28 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+// cherche une suite de caracteres dans une string
+char	*ft_strnstr(const char *fullstr, const char *substr, size_t len)
 {
-	size_t	i;
-	size_t	l;
-	size_t	j;
+	size_t	ifull;
+	size_t	isub;
+	size_t	sub_len;
+	char	*temp_fullstr;
 
-	i = 0;
-	l = 0;
-	j = 0;
-	if (needle[0] == '\0')
-		return ((char *)haystack + i);
-	while (haystack[j] && i < len)
+	ifull = 0;
+	isub = 0;
+	temp_fullstr = (char *)fullstr;
+	sub_len = ft_strlen(substr);
+	if (sub_len == 0)
+		return (temp_fullstr);
+	while (fullstr[ifull] != '\0' && ifull < len)
 	{
-		l = 0;
-		i = j;
-		while (haystack[i] == needle[l] && i < len && haystack[i] && needle[l])
+		while (fullstr[ifull + isub] == substr[isub] && (ifull + isub) < len)
 		{
-			i++;
-			l++;
+			isub++;
+			if (isub == sub_len)
+				return (temp_fullstr + ifull);
 		}
-		if (needle[l] == '\0')
-			return ((char *)(haystack + i - l));
-		j++;
+		isub = 0;
+		ifull++;
 	}
-	return (0);
+	return (NULL);
 }

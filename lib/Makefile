@@ -1,50 +1,47 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/07 14:00:36 by lylrandr          #+#    #+#              #
-#    Updated: 2025/02/26 15:22:05 by lylrandr         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC = gcc
-
-CFLAGS = -Wall -Werror -Wextra
-
-DEPS = libft.h
-
+CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
+SRC_DIR = src/
+OBJ_DIR = obj/
 
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-	  ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
-	  ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
-	  ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
-	  ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
-	  ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-	  ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
-	  ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c \
-	  ft_lstiter_bonus.c ft_lstmap_bonus.c
+SRC = ft_atoi.c ft_putendl_fd.c ft_strlen.c ft_bzero.c \
+		ft_putnbr_fd.c ft_strmapi.c\
+		ft_calloc.c        ft_putnbr_fd.c       ft_strncmp.c\
+		ft_isalnum.c       ft_putnbr_hex_ptr.c  ft_strncpy.c\
+		ft_isalpha.c       ft_putnbr_hex_xlo.c  ft_strnstr.c\
+		ft_isascii.c       ft_putnbr_hex_xup.c  ft_strrchr.c\
+		ft_isdigit.c       ft_putnbr_u.c        ft_strstr.c\
+		ft_isprint.c       ft_putptr.c          ft_strtrim.c\
+		ft_iswhitespace.c  ft_putstr.c          ft_substr.c\
+		ft_itoa.c          ft_putstr_fd.c       ft_tolower.c\
+		ft_memchr.c        ft_split.c           ft_toupper.c\
+		ft_memcmp.c        ft_strchr.c          get_next_line.c\
+		ft_memcpy.c        ft_strcmp.c         \
+		ft_memmove.c       ft_strcpy.c          get_next_line_utils.c\
+		ft_memset.c        ft_strdup.c          \
+		ft_printf.c        ft_striteri.c        \
+		ft_strjoin.c       ft_putnbr.c\
+		ft_putchar.c       ft_strlcat.c\
+		ft_putchar_fd.c    ft_strlcpy.c
 
-OBJ = $(SRC:.c=.o)
+
+# OBJS = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+OBJS = $(SRC:.c=.o)
+
 
 all: $(NAME)
 
-%.o: %.c
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
-fclean:
-	rm -f $(OBJ)
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: clean all fclean re

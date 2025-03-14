@@ -1,42 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 21:20:56 by moni              #+#    #+#             */
-/*   Updated: 2025/03/14 16:53:13 by monoguei         ###   ########.fr       */
+/*   Created: 2023/12/04 14:28:48 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:53:04 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-// affiche a tel endroit (fd) un nombre en int -> ASCII (string)
-void	ft_putnbr_fd(int n, int fd)
+static void	ft_exception(int *count)
+{
+	write(1, "-2147483648", 11);
+	(*count) = (*count) + 11;
+}
+
+// imprime nombre
+void	ft_putnbr(int n, int *count)
 {
 	int	digit;
 
 	digit = 0;
 	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
+		ft_exception(count);
 	else if (n < 0)
 	{
-		write(fd, "-", 1);
+		ft_putchar('-', count);
 		n = -n;
-		ft_putnbr_fd(n, fd);
+		ft_putnbr(n, count);
 	}
 	else
 	{
 		if (n > 9)
 		{
-			ft_putnbr_fd(n / 10, fd);
-			ft_putnbr_fd(n % 10, fd);
+			ft_putnbr(n / 10, count);
+			ft_putnbr(n % 10, count);
 		}
 		else
 		{
 			digit = n + 48;
-			write(fd, &digit, 1);
+			ft_putchar(digit, count);
 		}
 	}
 }

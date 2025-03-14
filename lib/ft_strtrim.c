@@ -3,86 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 11:49:26 by lylrandr          #+#    #+#             */
-/*   Updated: 2024/10/21 17:08:01 by lylrandr         ###   ########.fr       */
+/*   Created: 2023/11/08 21:07:57 by moni              #+#    #+#             */
+/*   Updated: 2025/03/14 16:50:19 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-static int	firsttrim(char const *s1, char const *set)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (set[j])
-	{
-		if (s1[i] == set[j])
-		{
-			i++;
-			j = 0;
-		}
-		else
-			j++;
-	}
-	return (i);
-}
-
-static int	endtrim(char const *s1, char const *set, int i)
-{
-	int	j;
-
-	i -= 1;
-	j = 0;
-	while (set[j] && i > 0)
-	{
-		if (s1[i] == set[j])
-		{
-			i--;
-			j = 0;
-		}
-		else
-			j++;
-	}
-	return (i);
-}
-
+// creer une deuxieme string ou sont supprimes les caracteres spécifiés au 
+// début et à la fin d'une string 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	int		t;
-	char	*str;
+	size_t	start;
+	size_t	end;
+	char	*s2;
+	size_t	i;
 
-	t = firsttrim(s1, set);
-	i = ft_strlen(s1);
-	j = 1 + endtrim(s1, set, i);
-	if (((int)j - (int)t) < 0)
-	{
-		str = malloc(sizeof(char) * 1);
-		str[0] = '\0';
-		return (str);
-	}
-	str = malloc(sizeof(char) * (j - t + 1));
-	if (!str)
+	if (!s1)
+		return (NULL);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	end = ft_strlen(s1);
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	s2 = malloc((end - start + 1) * sizeof(char));
+	if (!s2)
 		return (NULL);
 	i = 0;
-	while (t <= j)
-		str[i++] = s1[t++];
-	i -= 1;
-	str[i] = '\0';
-	return (str);
+	while (start + i < end)
+	{
+		s2[i] = s1[start + i];
+		i++;
+	}
+	s2[i] = 0;
+	return (s2);
 }
-/*
-#include <stdio.h>
-int	main()
-{
-	char s1[] = "";
-	char set[] = "cdef";
-	printf("%s\n", ft_strtrim(s1, set));
-}*/
