@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:11:06 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/13 08:57:15 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:02:55 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 // 	data = malloc(sizeof(t_data));
 
 // 	init_env(data, envp);
-
+// 	b_env(data);
 // }
 
 // void tester_cd(char **envp)

@@ -313,7 +313,7 @@
 // 	}
 // }
 
-// void	export(t_data *data)
+// bool	ft_isalpha(int c)
 // {
 // 	t_env	*current;
 // 	data->env = current;

@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:07:22 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 18:56:27 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:02:47 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,94 @@ char	**malloc_second_parsing(int len)
 		return (NULL);
 	tab_token[len] = NULL;
 	return (tab_token);
+}
+
+// copie colle avec malloc ET ajoute = a la fin
+char	*ft_strdup_equal(const char *src)
+{
+	int		i;
+	int		len;
+	char	*dest;
+
+	i = 0;
+	len = ft_strlen(src);
+	dest = (char *) malloc((len + 2) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	while (src[i] != 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '=';
+	dest[i] = 0;
+	return (dest);
+}
+
+// Concatène str dest+src mod moni
+// return taille tot
+size_t	ft_strcat(char *dest, const char *src)
+{
+	size_t	src_len;
+	size_t	dest_len;
+	size_t	i;
+	size_t	size;
+
+	src_len = ft_strlen(src);
+	dest_len = ft_strlen(dest);
+	size = src_len + dest_len;
+	i = 0;
+	if (size <= dest_len)
+		return (src_len + size);
+	while (src[i] != 0 && (dest_len + i) < (size - 1))
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+	if (size > 0)
+		dest[dest_len + i] = 0;
+	return (dest_len + src_len);
+}
+
+int	ft_strncmp_end(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	if (ft_strlen(s1) == n)
+	{
+		while (s1[i] && s2[i] && n > 1)
+		{
+			if (s1[i] != s2[i])
+				return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+			i++;
+			n--;
+		}
+		return (0);
+	}
+	else
+		return (-1);
+}
+
+// copie colle avec malloc
+char	*ft_strdup(const char *src)
+{
+	int		i;
+	int		len;
+	char	*dest;
+
+	i = 0;
+	len = ft_strlen(src);
+	dest = (char *) malloc((len + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	while (src[i] != 0)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moni <moni@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:44:03 by moni              #+#    #+#             */
-/*   Updated: 2024/05/02 15:02:28 by moni             ###   ########.fr       */
+/*   Updated: 2025/03/15 11:06:23 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 # include <stdio.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include <stdbool.h>
 
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t nb, size_t size);
-int		ft_isalnum(int c);
-int		ft_isalpha(int c);
+bool	ft_isalnum(int c);
+bool	ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
@@ -44,7 +45,6 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);

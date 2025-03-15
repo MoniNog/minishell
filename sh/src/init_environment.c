@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/17 18:57:53 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:01:52 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 // HELP ELISE
 t_env *create_env_var(char *env_var)
 {
+	// NAME '\0' Seven
 	t_env	*env;
 	char	*delimiter;
 
 	env = malloc(sizeof(t_env));
 	if (!env)
 		return (NULL);
-	delimiter = ft_strchr(env_var, '=');
+	delimiter = ft_strchr(env_var, '=');// si pas de '=' renvoie NULL
 	if (delimiter)
 	{
 		*delimiter = '\0';
@@ -73,7 +74,7 @@ void init_env(t_data *data, char **envp)
 	data->env = (t_env **)convert_envp(envp);
 }
 
-[ ] decomposer ligne par ligne sur papier -> schema de la vue densemble de la fonction 
-[ ] comprendre
-[ ] reecrire 
-[ ] commenter les protypes de la libft
+// [ ] decomposer ligne par ligne sur papier -> schema de la vue densemble de la fonction 
+// [ ] comprendre
+// [ ] reecrire 
+// [ ] commenter les protypes de la libft

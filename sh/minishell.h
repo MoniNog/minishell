@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 19:00:06 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:01:04 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <stddef.h>
 # include <stdbool.h>
 
+#  define TRUE 1
+#  define FALSE 0
 
 typedef struct s_envp
 {
@@ -134,6 +136,15 @@ void	init_env(t_data *data, char **envp);
 void init_input(t_input *input);
 
 // utils.c
-int	ft_strncmp(const char *first, const char *second, size_t len);
+int		ft_strncmp(const char *first, const char *second, size_t len);
+char	*ft_strdup_equal(const char *src);
+size_t	ft_strcat(char *dest, const char *src);
+int		ft_strncmp_end(const char *s1, const char *s2, size_t n);
+
+
+// signals.c
+__sighandler_t	handler_sigint(void);
+void	init_signals(void);
+void	restore_terminal(void);
 
 #endif

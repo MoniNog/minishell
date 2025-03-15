@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/17 18:59:04 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/17 19:01:59 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,6 @@ int	main(int ac, char **av, char **envp)
 		print_all_token_types(head);
 //		display_input(splited_input);
 		restore_terminal();
-			// problème de double affichage du prompt suite à ctrl +/ lors d'une exécution
 		cleanup_memory(input, splited_input);
 		init_signals();
 	}
