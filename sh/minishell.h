@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 16:22:33 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:51:30 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../lib/libft.h"
-# include <signal.h>     // signal, SIGINT, SIGQUIT, SIG_IGN
-# include <termios.h>    // termios, tcgetattr, tcsetattr
-# include <unistd.h>     // STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO, write
-# include <sys/wait.h>   // waitpid, WIFSIGNALED, WTERMSIG
+# include <signal.h>
+# include <termios.h>
+# include <unistd.h>
+# include <sys/wait.h>
 # include <stddef.h>
 # include <stdbool.h>
 
@@ -46,7 +46,8 @@ typedef enum s_token_type
 	T_ENV,
 	T_OP,
 	T_PIPE,
-	T_STR
+	T_SQUOTE,
+	T_DQUOTE
 }			t_token_type;
 
 typedef struct s_input
@@ -86,7 +87,7 @@ void	handle_operator(char **tab_token, char **array, int *index, int i);
 void	if_quotes(char *input, char **array, int *k, int *i);
 int		while_quotes(char *input, int i);
 char	**malloc_second_parsing(int len);
-void	is_open_quotes(char *input);
+int		is_open_quotes(char *input);
 
 // fonctions token
 

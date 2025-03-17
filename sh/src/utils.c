@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:07:22 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 16:14:45 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:51:23 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,21 @@ int	while_quotes(char *input, int i)
 	return (i);
 }
 
-void	fill_quotes(int len, char *input, char **array, int **i, int start)
+void	fill_quotes(int len, char *input, char **array, int **i, int k)
 {
-	int	j;
+	int		j;
+	char	quote;
 
 	j = 0;
+	quote = input[k];
 	while (j < len)
 	{
-		array[**i][j] = input[start + j];
-		j++;
+		if (input[k] != quote)
+		{
+			array[**i][j] = input[k];
+			j++;
+		}
+		k++;
 	}
 	array[**i][j] = '\0';
 }

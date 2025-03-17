@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:19:08 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 15:01:13 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:53:33 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ char	**fill_second_tab(char **array, char **tab_token)
 	return (tab_token);
 }
 
-
 char	**parse_input(char *input)
 {
 	char	**first_parse;
@@ -104,7 +103,11 @@ char	**parse_input(char *input)
 	int		i;
 
 	i = 0;
-	is_open_quotes(input);
+	if (is_open_quotes(input))
+	{
+		printf("missing one quote\n");
+		exit(0);
+	}
 	first_parse = first_parsing(input);
 	print_tokens(first_parse);
 	if (!first_parse)

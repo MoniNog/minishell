@@ -6,39 +6,30 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 15:03:08 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:50:19 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	is_open_quotes(char *input)
+int	is_open_quotes(char *input)
 {
 	int	i;
-	int	quote;
-	int	dquote;
+	int	in_dquote;
+	int	in_squote;
 
 	i = 0;
-	quote = 0;
-	dquote = 0;
+	in_dquote = 0;
+	in_squote = 0;
 	while (input[i])
 	{
-		if (input[i] == '"')
-			dquote++;
-		if (input[i] == '\'')
-			quote++;
+		if (input[i] == '"' && !in_squote)
+			in_dquote = !in_dquote;
+		else if (input[i] == '\'' && !in_dquote)
+			in_squote = !in_squote;
 		i++;
 	}
-	if (dquote % 2 != 0)
-	{
-		printf("missing one dquote\n");
-		exit(0); //CHANGER POUR NE PAS SORTIR DE MINISHELL MAIS JUSTE DE LA COMMANDE
-	}
-	else if (quote % 2 != 0)
-	{
-		printf("missing one quote\n");
-		exit(0);
-	}
+	if (in_dquote || in_squote)
+		return (1);
+	return (0);
 }
-
-

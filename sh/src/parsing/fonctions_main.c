@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:09:38 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/13 15:40:30 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:43:58 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ void	print_token_type(t_input *token)
 	case T_CMD_ARG:
 		printf("Token type: T_CMD_ARG\n");
 		break;
-	case T_STR:
-		printf("Token type: T_STR\n");
+	case T_SQUOTE:
+		printf("Token type: T_SQUOTE\n");
+		break;
+	case T_DQUOTE:
+		printf("Token type: T_DQUOTE\n");
 		break;
 	default:
 		printf("Unknown token type\n");

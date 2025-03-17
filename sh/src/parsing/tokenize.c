@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/13 15:23:27 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:35:50 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,10 @@ t_token_type	get_token_type(t_input *token, char *input)
 {
 	if (ft_strncmp(input, "|", 1) == 0)
 		return (T_PIPE);
-	else if (input[0] == '\'' || input[0] == '"')
-		return (T_STR);
+	else if (input[0] == '\'')
+		return (T_SQUOTE);
+	else if (input[0] == '"')
+		return (T_DQUOTE);
 	else if (ft_strncmp(input, "<", 1) == 0 || ft_strncmp(input, ">", 1) == 0
 		|| ft_strncmp(input, ">>", 2) == 0 || ft_strncmp(input, "<<", 2) == 0)
 		return(T_OP);
