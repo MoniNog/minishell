@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/12 14:50:05 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:23:27 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	first_word(char **input, char **env)
 	}
 }
 
-t_token	*tokenize(char **input)
+t_input	*tokenize(char **input)
 {
 	int		i;
-	t_token	*tail;
-	t_token	*head;
-	t_token	*new_node;
-	t_token	*current;
+	t_input	*tail;
+	t_input	*head;
+	t_input	*new_node;
+	t_input	*current;
 
 	i = 1;
-	tail = malloc(sizeof(t_token));
+	tail = malloc(sizeof(t_input));
 	if (!tail)
 		exit(1);
 	tail->token = input[0];
@@ -51,7 +51,7 @@ t_token	*tokenize(char **input)
 	head = tail;
 	while (input[i])
 	{
-		new_node = malloc(sizeof(t_token));
+		new_node = malloc(sizeof(t_input));
 		if (!new_node)
 			exit(1);
 		new_node->token = input[i];
@@ -71,10 +71,12 @@ t_token	*tokenize(char **input)
 	return (head);
 }
 
-t_token_type	get_token_type(t_token *token, char *input)
+t_token_type	get_token_type(t_input *token, char *input)
 {
 	if (ft_strncmp(input, "|", 1) == 0)
 		return (T_PIPE);
+	else if (input[0] == '\'' || input[0] == '"')
+		return (T_STR);
 	else if (ft_strncmp(input, "<", 1) == 0 || ft_strncmp(input, ">", 1) == 0
 		|| ft_strncmp(input, ">>", 2) == 0 || ft_strncmp(input, "<<", 2) == 0)
 		return(T_OP);
@@ -88,9 +90,9 @@ t_token_type	get_token_type(t_token *token, char *input)
 	return (T_CMD);
 }
 
-void	is_cmd_arg(t_token *token)
+void	is_cmd_arg(t_input *token)
 {
-	t_token	*curr;
+	t_input	*curr;
 
 	curr = token;
 	while (curr)

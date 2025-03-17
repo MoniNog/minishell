@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:39:34 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/12 14:34:45 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:05:16 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,55 @@
 char	**first_parsing(char *input)
 {
 	int		i;
-	int		j;
+	int		len;
 	char	**array;
 
 	i = 0;
-	j = 1;
+	len = 1;
 	while (input[i])
 	{
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			j++;
+		if (input[i] == '"' || input[i] == '\'')
+		{
+			len++;
+			i = while_quotes(input, i);
+		}
+		else if (input[i] == '|' || input[i] == '<' || input[i] == '>')
+			len++;
 		i++;
 	}
-	j++;
-	array = malloc(sizeof(char *) * (j + 1));
+	len++;
+	array = malloc(sizeof(char *) * (len + 1));
 	if (!array)
 		return (NULL);
-	array[j] = NULL;
+	array[len] = NULL;
 	return (fill_tab(input, array));
 }
 
 int	word_len(char *input)
 {
-	int	i;
+	int		i;
+	char	quote;
 
 	i = 0;
-	while (input[i] && input[i] != '|' && input[i] != '>' && input[i] != '<')
+	while (input[i] == ' ')
 		i++;
-	return (i);
+	if (input[i] == '\'' || input[i] == '"')
+	{
+		quote = input[i];
+		i++;
+		while (input[i] && input[i] != quote)
+			i++;
+		if (input[i] == quote)
+			i++;
+		return (i);
+	}
+	else
+	{
+		while (input[i] && input[i] != '|' && input[i] != '>' && input[i] != '<'
+			&& input[i] != ' ')
+			i++;
+		return (i);
+	}
 }
 
 void	if_operator(char *input, char **array, int *k, int i)
@@ -51,8 +73,8 @@ void	if_operator(char *input, char **array, int *k, int i)
 
 	j = 0;
 	len = 0;
-	while (input[*k + len] == '|' || input[*k + len] == '<'
-			|| input[*k + len] == '>')
+	while (input[*k + len] == '|' || input[*k + len] == '<' || input[*k
+		+ len] == '>')
 		len++;
 	array[i] = malloc(sizeof(char) * (len + 1));
 	if (!array[i])
@@ -75,7 +97,7 @@ void	if_n_op(char *input, char **array, int *k, int *i)
 
 	j = 0;
 	while (input[*k] && input[*k] != '|' && input[*k] != '>'
-		&& input[*k] != '<')
+		&& input[*k] != '<' && input[*k] != ' ')
 	{
 		array[*i][j] = input[*k];
 		(j)++;
@@ -94,8 +116,12 @@ char	**fill_tab(char *input, char **array)
 	k = 0;
 	while (input[k])
 	{
+		while(input[k] == ' ')
+			k++;
 		len = word_len(&input[k]);
-		if (input[k] == '|' || input[k] == '<' || input[k] == '>')
+		if (input[k] == '\'' || input[k] == '"')
+			if_quotes(input, array, &k, &i);
+		else if (input[k] == '|' || input[k] == '<' || input[k] == '>')
 			if_operator(input, array, &k, i);
 		else
 		{

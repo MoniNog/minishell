@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/12 14:49:31 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:14:31 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int	main(int ac, char **av, char **envp)
 {
 	char	*input;
 	char	**splited_input;
-	t_token	*head;
+	t_input	*head;
 
 	(void)ac;
 	(void)av;
@@ -175,10 +175,11 @@ int	main(int ac, char **av, char **envp)
 	{
 		input = get_user_input("minishell> ");
 		splited_input = parse_input(input);
+		print_tokens(splited_input);
 		head = tokenize(splited_input);
 		first_word(splited_input, envp);
 		print_all_token_types(head);
-		// display_input(splited_input);
+//		display_input(splited_input);
 		restore_terminal();
 			// problème de double affichage du prompt suite à ctrl +/ lors d'une exécution
 		cleanup_memory(input, splited_input);

@@ -6,14 +6,14 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:09:38 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/12 14:53:49 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:40:30 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
 // Fonction qui imprime le type d'un seul token (comme précédemment)
-void	print_token_type(t_token *token)
+void	print_token_type(t_input *token)
 {
 	if (!token)
 	{
@@ -43,6 +43,9 @@ void	print_token_type(t_token *token)
 	case T_CMD_ARG:
 		printf("Token type: T_CMD_ARG\n");
 		break;
+	case T_STR:
+		printf("Token type: T_STR\n");
+		break;
 	default:
 		printf("Unknown token type\n");
 		break ;
@@ -50,9 +53,9 @@ void	print_token_type(t_token *token)
 }
 
 // Fonction pour imprimer tous les types dans une liste chaînée de tokens
-void	print_all_token_types(t_token *head)
+void	print_all_token_types(t_input *head)
 {
-	t_token	*current;
+	t_input	*current;
 
 	current = head;
 	if (!current)
@@ -64,5 +67,17 @@ void	print_all_token_types(t_token *head)
 	{
 		print_token_type(current); // Affiche le type du token actuel
 		current = current->next;   // Passe au token suivant
+	}
+}
+
+void	print_tokens(char **tokens)
+{
+	int i = 0;
+
+	printf("Tokens:\n");
+	while (tokens[i])
+	{
+		printf("Token[%d]: %s\n", i, tokens[i]);
+		i++;
 	}
 }

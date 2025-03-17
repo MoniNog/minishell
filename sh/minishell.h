@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/12 14:47:49 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:22:33 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_envp
 	char	**envp;
 }			t_envp;
 
-void	echo(char *input);
 
 // signals.c
 __sighandler_t handler_sigint(void);
@@ -46,16 +45,17 @@ typedef enum s_token_type
 	T_FILE,
 	T_ENV,
 	T_OP,
-	T_PIPE
+	T_PIPE,
+	T_STR
 }			t_token_type;
 
-typedef struct s_token
+typedef struct s_input
 {
 	char			*token;
 	t_token_type	type;
-	struct s_token	*next;
-	struct s_token	*prev;
-}					t_token;
+	struct s_input	*next;
+	struct s_input	*prev;
+}					t_input;
 
 typedef struct s_env
 {
@@ -63,12 +63,6 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 }					t_env;
-
-typedef struct s_input
-{
-	char	*CMD;
-	char	*ARG;
-}	t_input;
 
 typedef struct s_data
 {
@@ -78,35 +72,39 @@ typedef struct s_data
 }				t_data;
 
 // fonctions parsing
-char				**fill_tab(char *input, char **array);
-void				if_n_op(char *input, char **array, int *k, int *i);
-void				if_operator(char *input, char **array, int *k, int i);
-int					word_len(char *input);
-char				**first_parsing(char *input);
-char				**second_parsing(char **array);
-// void	*read_input(char **input, char **env);
-void				first_word(char **input, char **env);
-char				**parse_input(char *input);
-char				**fill_second_tab(char **array, char **tab_token);
-int					handle_non_operator(char **tab_token, char *array, int *index);
-void				handle_operator(char **tab_token, char **array, int *index, int i);
+char	**fill_tab(char *input, char **array);
+void	if_n_op(char *input, char **array, int *k, int *i);
+void	if_operator(char *input, char **array, int *k, int i);
+int		word_len(char *input);
+char	**first_parsing(char *input);
+char	**second_parsing(char **array);
+void	first_word(char **input, char **env);
+char	**parse_input(char *input);
+char	**fill_second_tab(char **array, char **tab_token);
+int		handle_non_operator(char **tab_token, char *array, int *index);
+void	handle_operator(char **tab_token, char **array, int *index, int i);
+void	if_quotes(char *input, char **array, int *k, int *i);
+int		while_quotes(char *input, int i);
+char	**malloc_second_parsing(int len);
+void	is_open_quotes(char *input);
 
 // fonctions token
 
 int		is_cmd(char *token, char **env);
-t_token	*tokenize(char **input);
-t_token_type	get_token_type(t_token *token, char *input);
-void	is_cmd_arg(t_token *token);
+t_input	*tokenize(char **input);
+t_token_type	get_token_type(t_input *token, char *input);
+void	is_cmd_arg(t_input *token);
 
 // fonctions path
-char				**ft_split_path(char *fullpath);
-char				*ft_find_executable(char **path, char *cmd);
-char				*ft_get_path(char *fullpath, char *cmd);
-char				*ft_get_env_path(char **env);
+char	**ft_split_path(char *fullpath);
+char	*ft_find_executable(char **path, char *cmd);
+char	*ft_get_path(char *fullpath, char *cmd);
+char	*ft_get_env_path(char **env);
 
 //fonctions main [ ] a renommer
-void print_token_type(t_token *token);
-void print_all_token_types(t_token *head);
+void	print_token_type(t_input *token);
+void	print_all_token_types(t_input *head);
+void	print_tokens(char **tokens);
 
 // fonctions exec + moni
 // signals.c

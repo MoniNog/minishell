@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:19:08 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/12 14:35:15 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:01:13 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	**second_parsing(char **array)
 {
-	char	**tab_token;
 	int		i;
 	int		j;
 	int		len;
@@ -24,6 +23,12 @@ char	**second_parsing(char **array)
 	while (array[i])
 	{
 		j = 0;
+		if (array[i][0] == '\'' || array[i][0] == '"')
+		{
+			len++;
+			i++;
+			continue;
+		}
 		while (array[i][j])
 		{
 			if (array[i][j] == ' ')
@@ -33,10 +38,7 @@ char	**second_parsing(char **array)
 		i++;
 		len++;
 	}
-	tab_token = malloc(sizeof(char *) * (len + 1));
-	if (!tab_token)
-		return (NULL);
-	return (fill_second_tab(array, tab_token));
+	return (fill_second_tab(array, malloc_second_parsing(len)));
 }
 
 void	handle_operator(char **tab_token, char **array, int *index, int i)
@@ -79,7 +81,9 @@ char	**fill_second_tab(char **array, char **tab_token)
 	index = 0;
 	while (array[i])
 	{
-		if (array[i][0] == '|' || array[i][0] == '<' || array[i][0] == '>')
+		if (array[i][0] == '\'' || array[i][0] == '"')
+			handle_operator(tab_token, array, &index, i);
+		else if (array[i][0] == '|' || array[i][0] == '<' || array[i][0] == '>')
 			handle_operator(tab_token, array, &index, i);
 		else
 		{
@@ -100,7 +104,9 @@ char	**parse_input(char *input)
 	int		i;
 
 	i = 0;
+	is_open_quotes(input);
 	first_parse = first_parsing(input);
+	print_tokens(first_parse);
 	if (!first_parse)
 		return (NULL);
 	final_parse = second_parsing(first_parse);
