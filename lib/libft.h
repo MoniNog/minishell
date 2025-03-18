@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:44:03 by moni              #+#    #+#             */
-/*   Updated: 2025/03/15 11:06:23 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:01:22 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t nb, size_t size);
-bool	ft_isalnum(int c);
+int		ft_isalnum(int c);
 bool	ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
