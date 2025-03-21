@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 20:22:09 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/14 09:11:31 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:59:29 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,5 @@ void b_cd(t_data *data, char *arg)
 	if (ft_strncmp(current->name, "OLDPWD", 6) == 0)
 		current->value = (char *)temp_pwd;
 }
+
+// [ ] gerer si pas dargument, retour racine

@@ -6,13 +6,17 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 21:11:35 by moni              #+#    #+#             */
-/*   Updated: 2025/03/14 16:50:46 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:16:51 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// copie une string en appliquant la fonction f
+
+/// @brief create a cpy (malloc) of a str, modified by function f
+/// @param s str to cpy and mod
+/// @param f function to apply. 'char 	*f(unsigned int a, char c);'
+/// @return str modified. returns NULL if error
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*s2;

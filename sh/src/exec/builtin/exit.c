@@ -25,7 +25,7 @@
 // void	b_exit(t_data *data)
 // {
 // 	if (no_arg)
-// 		"exit"
+// 		"exit";
 // 		exit(0);
 // 	else if (more than 1 arg)
 // 		`bash: exit: too many arguments`;
@@ -51,3 +51,5 @@
 
 // 	return (0);
 // }
+
+// [ ] a coder...

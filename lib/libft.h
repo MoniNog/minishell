@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:44:03 by moni              #+#    #+#             */
-/*   Updated: 2025/03/15 11:06:23 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:41:31 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t nb, size_t size);
-bool	ft_isalnum(int c);
-bool	ft_isalpha(int c);
+int		ft_isalnum(int c);
+int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);

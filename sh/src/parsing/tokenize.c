@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 16:35:50 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:03:13 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+bool	is_builtin(char *cmd)
+{
+	if (ft_strncmp(cmd, "echo", 5) == 0 || ft_strncmp(cmd, "cd", 3) == 0
+		|| ft_strncmp(cmd, "pwd", 4) == 0 || ft_strncmp(cmd, "export", 7) == 0
+		|| ft_strncmp(cmd, "unset", 6) == 0 || ft_strncmp(cmd, "env", 4) == 0
+		|| ft_strncmp(cmd, "exit", 5) == 0)
+		return (true);
+	return (false);
+}
 
 
 void	first_word(char **input, char **env)
@@ -20,11 +30,15 @@ void	first_word(char **input, char **env)
 			2) == 0)
 		//		operator_token(input[0]);
 		printf("operateur?\n");
+	else if (is_builtin(input[0]) == TRUE)
+			// tester_echo();
+			printf("lily et seven") ;
+	// b_echo((t_input *)input);
 	else if (!is_cmd(input[0], env))
-	{
-		printf("minishell: command not found: %s\n", input[0]);
-		exit(127);
-	}
+		{
+			printf("minishell: command not found: %s\n", input[0]);
+			// exit(127);
+		}
 	else
 	{
 		//		word_token(input[0]);

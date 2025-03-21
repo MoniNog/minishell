@@ -6,13 +6,12 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/17 19:01:52 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:54:09 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// HELP ELISE
 t_env *create_env_var(char *env_var)
 {
 	// NAME '\0' Seven
@@ -71,7 +70,7 @@ t_env *convert_envp(char **envp)
 
 void init_env(t_data *data, char **envp)
 {
-	data->env = (t_env **)convert_envp(envp);
+	data->env = convert_envp(envp);
 }
 
 // [ ] decomposer ligne par ligne sur papier -> schema de la vue densemble de la fonction 

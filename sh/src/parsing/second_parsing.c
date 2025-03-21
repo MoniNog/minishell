@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   second_parsing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:19:08 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 17:53:33 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:26:25 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	**parse_input(char *input)
 		exit(0);
 	}
 	first_parse = first_parsing(input);
-	print_tokens(first_parse);
+//	print_tokens(first_parse);
 	if (!first_parse)
 		return (NULL);
 	final_parse = second_parsing(first_parse);

@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 19:01:04 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:48:27 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	t_token		**input;// ligne de commande
+	t_input		**input;// ligne de commande
 	t_env		*env;// tableau envp
 	char		**copy_env;
 	int			exit_status;
@@ -122,7 +122,7 @@ void	cleanup_memory(char *line, char **splited_line);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 // /builtin
-void	b_echo(char **input);
+void	b_echo(t_input *input);
 void	b_pwd(void);
 void	b_env(t_data *data);
 void	b_cd(t_data *data, char *arg);
