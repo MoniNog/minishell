@@ -6,12 +6,15 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 20:22:09 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/21 10:59:29 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:20:50 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../minishell.h"
 
+/// @brief built-in change directory `cd <path>`, `cd`, `cd -`, `cd..` 
+/// @param data 
+/// @param arg <path>
 void b_cd(t_data *data, char *arg)
 {
     t_env	*current;
@@ -46,3 +49,4 @@ void b_cd(t_data *data, char *arg)
 }
 
 // [ ] gerer si pas dargument, retour racine
+// [ ] cd 'src/exec'

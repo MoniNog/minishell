@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/18 16:48:27 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 21:21:21 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,6 @@
 
 #  define TRUE 1
 #  define FALSE 0
-
-typedef struct s_envp
-{
-	char	**envp;
-}			t_envp;
-
-
-// signals.c
-__sighandler_t handler_sigint(void);
-void init_signals(void);
-void restore_terminal(void);
 
 typedef enum s_token_type
 {
@@ -94,7 +83,6 @@ char	**malloc_second_parsing(int len);
 int		is_open_quotes(char *input);
 
 // fonctions token
-
 int		is_cmd(char *token, char **env);
 t_input	*tokenize(char **input);
 t_token_type	get_token_type(t_input *token, char *input);
@@ -127,20 +115,19 @@ void	b_pwd(void);
 void	b_env(t_data *data);
 void	b_cd(t_data *data, char *arg);
 
-// init_environment
+// init_environment.c
 t_env	*create_env_var(char *env_var);
 t_env	*convert_envp(char **envp);
 void	init_env(t_data *data, char **envp);
 
 // init_arg
-void init_input(t_input *input);
+// void init_input(t_input *input);
 
 // utils.c
 int		ft_strncmp(const char *first, const char *second, size_t len);
 char	*ft_strdup_equal(const char *src);
 size_t	ft_strcat(char *dest, const char *src);
 int		ft_strncmp_end(const char *s1, const char *s2, size_t n);
-
 
 // signals.c
 __sighandler_t	handler_sigint(void);

@@ -6,20 +6,14 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 09:59:39 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/18 17:05:10 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:24:50 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../minishell.h"
 
-// fonction permettant didentifier si l-option "-n" est present dans l'input
-// bool	op_n(char *input)
-// {
-// 	if (ft_strchr(input, ' ') != '\0')
-// 		if
-// }
-
-// input, char** doit se terminer par NULL	ou fournir la taille du tableau en arg.
+/// @brief built-in `echo` `echo -n`
+/// @param input 
 void	b_echo(t_input *input)
 {
 	while(input->next->type == T_ARG)
@@ -29,7 +23,6 @@ void	b_echo(t_input *input)
 			write(1, "\n", 1);
 		input->next = input->next->next;
 	}
-	
 }
 
 // [ ] gestion plusieurs n

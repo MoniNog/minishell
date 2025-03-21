@@ -6,13 +6,11 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 16:41:45 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/18 16:48:50 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:46:20 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include "../../../minishell.h"
-
-// void tester_cd(char **envp);
 
 // void	exec_builtin(char *cmd)
 // {

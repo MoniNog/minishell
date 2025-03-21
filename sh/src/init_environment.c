@@ -6,22 +6,24 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/21 10:54:09 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 20:58:14 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/// @brief create new node with name and value
+/// @param env_var a couple of name/value comming from environnement 
+/// @return new node for struct t_env
 t_env *create_env_var(char *env_var)
 {
-	// NAME '\0' Seven
 	t_env	*env;
 	char	*delimiter;
 
 	env = malloc(sizeof(t_env));
 	if (!env)
 		return (NULL);
-	delimiter = ft_strchr(env_var, '=');// si pas de '=' renvoie NULL
+	delimiter = ft_strchr(env_var, '=');
 	if (delimiter)
 	{
 		*delimiter = '\0';
@@ -38,6 +40,9 @@ t_env *create_env_var(char *env_var)
 	return (env);
 }
 
+/// @brief convert environnement char ** to linked list `struct t_env`
+/// @param envp 
+/// @return head (first element) of linked list `t_env`
 t_env *convert_envp(char **envp)
 {
 	int		i;
@@ -68,6 +73,9 @@ t_env *convert_envp(char **envp)
 	return (head);
 }
 
+/// @brief init environnement 
+/// @param data 
+/// @param envp 
 void init_env(t_data *data, char **envp)
 {
 	data->env = convert_envp(envp);

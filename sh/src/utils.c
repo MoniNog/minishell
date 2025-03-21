@@ -6,12 +6,15 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:07:22 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 19:02:47 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/21 21:13:24 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+/// @brief first cleanup memory function
+/// @param line 
+/// @param splited_line 
 void	cleanup_memory(char *line, char **splited_line)
 {
 	int	j;
@@ -24,24 +27,6 @@ void	cleanup_memory(char *line, char **splited_line)
 		j++;
 	}
 	free(splited_line);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < n && s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	if (i < n && (s1[i] || s2[i]))
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	return (0);
 }
 
 int	while_quotes(char *input, int i)
@@ -118,7 +103,12 @@ char	**malloc_second_parsing(int len)
 	return (tab_token);
 }
 
+
 // copie colle avec malloc ET ajoute = a la fin
+
+/// @brief copy src (malloc) and add `=` at the end (for linked list `t_env`)
+/// @param src 
+/// @return copied `str=`
 char	*ft_strdup_equal(const char *src)
 {
 	int		i;
@@ -140,8 +130,10 @@ char	*ft_strdup_equal(const char *src)
 	return (dest);
 }
 
-// Concatène str dest+src mod moni
-// return taille tot
+/// @brief Concat str dest+src mod moni for export
+/// @param dest NAME=
+/// @param src value
+/// @return total lenght (src + dest)
 size_t	ft_strcat(char *dest, const char *src)
 {
 	size_t	src_len;
@@ -165,6 +157,11 @@ size_t	ft_strcat(char *dest, const char *src)
 	return (dest_len + src_len);
 }
 
+/// @brief compare name of buil-in with input, 
+/// @param s1 built-in
+/// @param s2 input
+/// @param n number of char expected
+/// @return ret 0 if s1 = s2, ret -1 if n_lenght != built-in, ret >0 s1 != s2
 int	ft_strncmp_end(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
@@ -187,7 +184,7 @@ int	ft_strncmp_end(const char *s1, const char *s2, size_t n)
 		return (-1);
 }
 
-// copie colle avec malloc
+// duplicated (malloc), return cpy
 char	*ft_strdup(const char *src)
 {
 	int		i;
