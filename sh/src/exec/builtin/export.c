@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 10:35:45 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/21 20:42:12 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:44:00 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	*copy_env_list(t_data *data)
 		size_env_list++;
 		data->env = data->env->next;
 	}
-
+	data->size_env_list = size_env_list;
 	data->env = temp;
 	data->copy_env = malloc(sizeof(char **) * size_env_list + 1);
 	if (!data->copy_env)
@@ -146,6 +146,19 @@ bool is_valid_env_var_syntax(char *s_env)
 	return (FALSE);
 }
 
+/// @brief swap words for sort NAME of environnement `export`
+/// @param a 
+/// @param b 
+void	swap_words(char **a, char **b)
+{
+	char *temp;
+	temp = NULL;
+
+	temp = *a;
+	*a = *b;
+    *b = temp;
+}
+
 // ret 1 = swap nec
 // ret 0 = PAS de swap
 int	compare_words(char *w1, char *w2)
@@ -171,8 +184,6 @@ void	sort_words(char	**words, int len)
 {
 	int	i = 0;
 	int	j = 1;
-	int c = 0;
-
 
 	while(i < len && j < len)
 	{
@@ -222,6 +233,12 @@ void 	print_copy_env(t_data *data)
 /// @param data 
 void	b_export(t_data *data)
 {
+	if (data->input == T_CMD)
+	{
+		copy_env_list(data);
+		// sort_words(data->copy_env, data->size_env_list);
+		// print_copy_env(data);
+	}
 	return ;
 }
 
@@ -259,3 +276,15 @@ void	b_export(t_data *data)
 // 	}
 // 	si succes exit_status 0
 // }
+
+int main(int ac, char **av, char **envp)
+{
+	t_data	*data = malloc(sizeof(t_data));
+	if(!data)
+		return 0;
+	(void)ac;
+	(void)av;
+	init_env(data, envp);
+	// b_env(data);
+	// b_export(data);
+}

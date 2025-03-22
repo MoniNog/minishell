@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/21 21:21:21 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:56:26 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_data
 	t_input		**input;// ligne de commande
 	t_env		*env;// tableau envp
 	char		**copy_env;
+	int			size_env_list;
 	int			exit_status;
 }				t_data;
 
@@ -114,6 +115,8 @@ void	b_echo(t_input *input);
 void	b_pwd(void);
 void	b_env(t_data *data);
 void	b_cd(t_data *data, char *arg);
+void	b_export(t_data *data);
+
 
 // init_environment.c
 t_env	*create_env_var(char *env_var);
@@ -133,5 +136,13 @@ int		ft_strncmp_end(const char *s1, const char *s2, size_t n);
 __sighandler_t	handler_sigint(void);
 void	init_signals(void);
 void	restore_terminal(void);
+
+//tester.c
+void	tester_cd(char **envp);
+// void	tester_echo(void);
+void	tester_env(char **envp);
+int		tester_pwd(void);
+void	tester_export();
+
 
 #endif

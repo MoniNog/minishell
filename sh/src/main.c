@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/21 10:52:36 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:55:27 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	main(int ac, char **av, char **envp)
 		// tester_cd(envp);
 		// b_echo(input);
 		print_all_token_types(head);
-		b_pwd();
+		// b_pwd();
+		tester_env(envp);
+		// tester_export;
+		
 		restore_terminal();
 		cleanup_memory(input, splited_input);
 		init_signals();

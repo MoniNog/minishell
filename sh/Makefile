@@ -5,7 +5,8 @@ CFLAGS = -Wall -Wextra -g
 LDFLAGS = -lreadline -lncurses  # Ajout pour readline
 
 SRC_DIR = src
-SRC = $(shell find $(SRC_DIR) -type f -name "*.c")
+# SRC = $(shell find $(SRC_DIR) -type f -name "*.c")
+SRC = src/init_environment.c src/exec/builtin/env.c src/exec/builtin/export.c  
 OBJDIR = obj
 OBJS = $(SRC:src/%.c=$(OBJDIR)/%.o)
 DEPS = $(OBJS:.o=.d)

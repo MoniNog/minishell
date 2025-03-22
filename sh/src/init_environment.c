@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/21 20:58:14 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/22 17:40:01 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_env *create_env_var(char *env_var)
 	t_env	*env;
 	char	*delimiter;
 
+	env = NULL;
 	env = malloc(sizeof(t_env));
 	if (!env)
 		return (NULL);

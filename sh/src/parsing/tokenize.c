@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/18 17:03:13 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:54:02 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ void	first_word(char **input, char **env)
 		//		operator_token(input[0]);
 		printf("operateur?\n");
 	else if (is_builtin(input[0]) == TRUE)
-			// tester_echo();
-			printf("lily et seven") ;
+{			// tester_echo();
+			printf("is built-in\n") ;
 	// b_echo((t_input *)input);
+}
 	else if (!is_cmd(input[0], env))
 		{
 			printf("minishell: command not found: %s\n", input[0]);

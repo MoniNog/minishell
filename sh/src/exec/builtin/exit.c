@@ -6,7 +6,7 @@
 /*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 09:21:29 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/21 20:31:51 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/22 16:38:45 by monoguei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	b_exit(t_data *data)
 	// 		exit(255);
 
 	// cleanup_memory(data->input);
+(void)data;
 	printf("exit\n");
 	exit(0);
 }

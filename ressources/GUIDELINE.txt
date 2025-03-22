@@ -38,9 +38,9 @@ OK	[Moni] Have a working history (you can navigate through commands with up/down
 
 _________MONI___________
 
-[ ] faire de l'ordre
-[ ] commenter mes fonctions
-[ ] etre gentille avec Moni du futur
+[x] faire de l'ordre
+[x] commenter mes fonctions
+[keep_on_trying] etre gentille avec Moni du futur
 [ ] avancer dans les builtins
 	[ ] export
 		[ ] tri alphabetique
