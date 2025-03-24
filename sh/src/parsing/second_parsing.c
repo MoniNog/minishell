@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 16:19:08 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 17:53:33 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:29:34 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	**second_parsing(char **array)
 {
-	int		i;
-	int		j;
-	int		len;
+	int	i;
+	int	j;
+	int	len;
 
 	i = 0;
 	len = 0;
@@ -27,7 +27,7 @@ char	**second_parsing(char **array)
 		{
 			len++;
 			i++;
-			continue;
+			continue ;
 		}
 		while (array[i][j])
 		{
@@ -74,8 +74,8 @@ int	handle_non_operator(char **tab_token, char *array, int *index)
 
 char	**fill_second_tab(char **array, char **tab_token)
 {
-	int		i;
-	int		index;
+	int	i;
+	int	index;
 
 	i = 0;
 	index = 0;
@@ -109,7 +109,6 @@ char	**parse_input(char *input)
 		exit(0);
 	}
 	first_parse = first_parsing(input);
-	print_tokens(first_parse);
 	if (!first_parse)
 		return (NULL);
 	final_parse = second_parsing(first_parse);

@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:09:38 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/17 16:43:58 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:22:26 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,19 @@ void	print_tokens(char **tokens)
 		printf("Token[%d]: %s\n", i, tokens[i]);
 		i++;
 	}
+}
+
+ void	print_token_list(t_input *head)
+{
+	t_input	*curr = head;
+	int		i = 0;
+
+	printf("\n🔍 Vérification des tokens après expansion :\n");
+	while (curr)
+	{
+		printf("Token[%d]: %s (Type: %d)\n", i, curr->token, curr->type);
+		curr = curr->next;
+		i++;
+	}
+	printf("\n");
 }

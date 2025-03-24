@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 16:35:50 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:47:53 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ void	first_word(char **input, char **env)
 		|| ft_strncmp(input[0], ">>", 2) == 0 || ft_strncmp(input[0], "<<",
 			2) == 0)
 		//		operator_token(input[0]);
-		printf("operateur?\n");
+		printf("operateur\n");
+	else if (ft_strncmp(input[0], "$?", 3) == 0)
+		printf("exit code\n");
 	else if (!is_cmd(input[0], env))
 	{
 		printf("minishell: command not found: %s\n", input[0]);
-		exit(127);
+//		exit(127);
 	}
 	else
 	{
 		//		word_token(input[0]);
 		printf("cmd\n");
-//		head->type = T_CMD;
 	}
 }
 

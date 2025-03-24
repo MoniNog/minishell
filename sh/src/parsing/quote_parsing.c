@@ -6,30 +6,31 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 17:50:19 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:21:09 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	is_open_quotes(char *input)
+void	remove_quotes(t_input *head)
 {
-	int	i;
-	int	in_dquote;
-	int	in_squote;
+	t_input	*curr;
+	char	*new;
 
-	i = 0;
-	in_dquote = 0;
-	in_squote = 0;
-	while (input[i])
+	curr = head;
+	printf("im here");
+	while (curr)
 	{
-		if (input[i] == '"' && !in_squote)
-			in_dquote = !in_dquote;
-		else if (input[i] == '\'' && !in_dquote)
-			in_squote = !in_squote;
-		i++;
+		if (curr->type == T_SQUOTE || curr->type == T_DQUOTE)
+		{
+			new = handle_quoted_token(curr->token);
+			if (!new)
+				return ;
+			free(curr->token);
+			curr->token = new;
+		}
+		curr = curr->next;
 	}
-	if (in_dquote || in_squote)
-		return (1);
-	return (0);
 }
+
+

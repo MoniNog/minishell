@@ -175,7 +175,7 @@
 
 // // return 0 si s2 doit être placé avant s1 dans la liste
 // // return 1 si ordre ok
-// int cmp_str(char* s1, char* s2) 
+// int cmp_str(char* s1, char* s2)
 // {
 // 	int	i;
 // 	int	j;
@@ -245,7 +245,7 @@
 // 		printf("error malloc");
 // 		return (NULL);
 // 	}
-	
+
 // 	while (data->env)
 // 	{
 // 		name = ft_strdup_equal(data->env->name);
@@ -286,20 +286,20 @@
 // // [ok] fonction de comparaison s1, s2
 // // [ok] cree une copie de la liste juste char *name=value donc liste chainee de char *
 // // [ok] fonction syntaxe env var
-// // [ ] fonction tri list_copie 
+// // [ ] fonction tri list_copie
 // // [ok] imprimer listechainee
 // // [ ]	imprimer syntaxe execptions
-// // // //	syntaxe 
-// // // //		`declare -x VAR="value"` 
+// // // //	syntaxe
+// // // //		`declare -x VAR="value"`
 // // // //		si pas de value,	`declare -x VAR`
 // // // //		si value vide,		`declare -x VAR=""`
 // // [ ] free lst
 // // 	// Nom de variable (name) : MY_VAR_1 (lettres, chiffres, underscore, ne commence pas par un chiffre)
 // // 	// Valeur (value) : Hello_World123 (lettres, chiffres, underscores, espaces possibles)
-// // 		if syntaxe invalide 
+// // 		if syntaxe invalide
 // // 			~`bash: export: 'X': not a valid identifier`
 // // 			exit_status(1)
-// // 	
+// //
 
 // void 	print_copy_env(t_data *data)
 // {
@@ -324,8 +324,8 @@
 // 	}
 
 // 		//parcourir env, afficher dans ordre alphabetique dans le terminal
-// //		syntaxe 
-// //			`declare -x VAR="value"` 
+// //		syntaxe
+// //			`declare -x VAR="value"`
 // //			si pas de value,	`declare -x VAR`
 // //			si value vide,		`declare -x VAR=""`
 // 	}
@@ -334,9 +334,9 @@
 // {
 // 		if ('=' present)
 // 		{
-// 			si existe deja 
+// 			si existe deja
 // 				maj value
-// 			else 
+// 			else
 // 				ajoute VAR=value a env
 // 		}
 // 		else
@@ -344,7 +344,7 @@
 // 			si existe deja
 // 				rien
 // 			else
-// 				creation valeur 
+// 				creation valeur
 // 	}
 // 	si succes exit_status 0
 // }

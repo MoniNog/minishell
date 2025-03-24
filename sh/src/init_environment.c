@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_environment.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:00:48 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/17 19:01:52 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/19 14:04:34 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ t_env *convert_envp(char **envp)
 	}
 	return (head);
 }
-
+/*
 void init_env(t_data *data, char **envp)
 {
 	data->env = (t_env **)convert_envp(envp);
-}
+}*/
 
-// [ ] decomposer ligne par ligne sur papier -> schema de la vue densemble de la fonction 
+// [ ] decomposer ligne par ligne sur papier -> schema de la vue densemble de la fonction
 // [ ] comprendre
-// [ ] reecrire 
+// [ ] reecrire
 // [ ] commenter les protypes de la libft

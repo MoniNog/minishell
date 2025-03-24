@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:07:22 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 19:02:47 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/19 18:32:00 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,80 +44,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
-int	while_quotes(char *input, int i)
-{
-	if (input[i] == '\'')
-	{
-		i++;
-		while (input[i] != '\'')
-			i++;
-	}
-	else if (input[i] == '"')
-	{
-		i++;
-		while (input[i] != '"')
-			i++;
-	}
-	while (input[i + 1] != ' ' && input[i + 1] != '|' && input[i + 1] != '<'
-		&& input[i + 1] != '>' && input[i + 1])
-		i++;
-	return (i);
-}
-
-void	fill_quotes(int len, char *input, char **array, int **i, int k)
-{
-	int		j;
-	char	quote;
-
-	j = 0;
-	quote = input[k];
-	while (j < len)
-	{
-		if (input[k] != quote)
-		{
-			array[**i][j] = input[k];
-			j++;
-		}
-		k++;
-	}
-	array[**i][j] = '\0';
-}
-
-void	if_quotes(char *input, char **array, int *k, int *i)
-{
-	char	quote;
-	int		start;
-	int		len;
-
-	quote = input[*k];
-	start = *k;
-	(*k)++;
-	while (input[*k] && input[*k] != quote)
-		(*k)++;
-	if (input[*k] == quote)
-		(*k)++;
-	while (input[*k] && input[*k] != ' ' && input[*k] != '|' && input[*k] != '<'
-		&& input[*k] != '>' && input[*k] != ';' && input[*k] != '&'
-		&& input[*k] != '(' && input[*k] != ')')
-		(*k)++;
-	len = *k - start;
-	array[*i] = malloc(sizeof(char) * (len + 1));
-	if (!array[*i])
-		return ;
-	fill_quotes(len, input, array, &i, start);
-}
-
-char	**malloc_second_parsing(int len)
-{
-	char	**tab_token;
-
-	tab_token = malloc(sizeof(char *) * (len + 1));
-	if (!tab_token)
-		return (NULL);
-	tab_token[len] = NULL;
-	return (tab_token);
-}
-
 // copie colle avec malloc ET ajoute = a la fin
 char	*ft_strdup_equal(const char *src)
 {
@@ -127,7 +53,7 @@ char	*ft_strdup_equal(const char *src)
 
 	i = 0;
 	len = ft_strlen(src);
-	dest = (char *) malloc((len + 2) * sizeof(char));
+	dest = (char *)malloc((len + 2) * sizeof(char));
 	if (!dest)
 		return (NULL);
 	while (src[i] != 0)
@@ -196,7 +122,7 @@ char	*ft_strdup(const char *src)
 
 	i = 0;
 	len = ft_strlen(src);
-	dest = (char *) malloc((len + 1) * sizeof(char));
+	dest = (char *)malloc((len + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
 	while (src[i] != 0)
@@ -207,3 +133,59 @@ char	*ft_strdup(const char *src)
 	dest[i] = 0;
 	return (dest);
 }
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	src_len;
+
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (size == 0)
+		return (src_len);
+	i = 0;
+	while (src[i] && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (src_len);
+}
+
+t_input	*cat_token(t_input *token, char *value, int len)
+{
+	t_input	*new_token;
+	int		i;
+	int		j;
+	int		k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	new_token = malloc(sizeof(t_input));
+	if (!new_token)
+		return (NULL);
+	new_token->token = malloc(sizeof(char) * (len + 1));
+	if (!new_token->token)
+	{
+		free(new_token);
+		return (NULL);
+	}
+	while (token->token[i] && token->token[i] != '$')
+	{
+		new_token->token[j] = token->token[i];
+		i++;
+		j++;
+	}
+	while (value[k])
+	{
+		new_token->token[j] = value[k];
+		k++;
+		j++;
+	}
+	new_token->token[j] = '\0';
+	return (new_token);
+}
+

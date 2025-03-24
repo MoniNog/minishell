@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: monoguei <monoguei@student.lausanne42.c    +#+  +:+       +#+        */
+/*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/17 19:01:04 by monoguei         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:19:56 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	t_token		**input;// ligne de commande
+	t_input		**input;// ligne de commande
 	t_env		*env;// tableau envp
 	char		**copy_env;
 	int			exit_status;
@@ -89,9 +89,14 @@ char	**fill_second_tab(char **array, char **tab_token);
 int		handle_non_operator(char **tab_token, char *array, int *index);
 void	handle_operator(char **tab_token, char **array, int *index, int i);
 void	if_quotes(char *input, char **array, int *k, int *i);
+void	remove_quotes(t_input *head);
 int		while_quotes(char *input, int i);
 char	**malloc_second_parsing(int len);
 int		is_open_quotes(char *input);
+void	is_env_var(t_input *input);
+void	replace_env_value(t_input *token, int i);
+char	*handle_quoted_token(char *quoted_str);
+void	print_token_list(t_input *head);
 
 // fonctions token
 
@@ -120,6 +125,7 @@ void	restore_terminal(void);
 // utils.c
 void	cleanup_memory(char *line, char **splited_line);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 // /builtin
 void	b_echo(char **input);
@@ -140,6 +146,8 @@ int		ft_strncmp(const char *first, const char *second, size_t len);
 char	*ft_strdup_equal(const char *src);
 size_t	ft_strcat(char *dest, const char *src);
 int		ft_strncmp_end(const char *s1, const char *s2, size_t n);
+char	*ft_strcpy(char *dest, const char *src);
+t_input	*cat_token(t_input *token, char *value, int len);
 
 
 // signals.c
