@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/25 15:48:51 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:16:35 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	is_env_var(t_input *input);
 void	replace_env_value(t_input *token);
 char	*handle_quoted_token(char *quoted_str);
 void	print_token_list(t_input *head);
-void	expand_all_tokens(t_input *head);
 
 // fonctions token
 
