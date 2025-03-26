@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:05 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:18:52 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:35:10 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*handle_quoted_token(char *quoted_str)
 	result = malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
-	i = 1;
+	i = 0;
 	j = 0;
 	while (quoted_str[i])
 	{

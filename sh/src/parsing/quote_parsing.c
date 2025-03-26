@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:58:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:21:09 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/24 18:13:30 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	remove_quotes(t_input *head)
 	char	*new;
 
 	curr = head;
-	printf("im here");
 	while (curr)
 	{
 		if (curr->type == T_SQUOTE || curr->type == T_DQUOTE)
@@ -31,6 +30,21 @@ void	remove_quotes(t_input *head)
 		}
 		curr = curr->next;
 	}
+}
+
+int	num_var(t_input *token)
+{
+	int	i;
+	int	num;
+
+	i = 0;
+	while (token->token[i])
+	{
+		if (token->token[i] == '$')
+			num++;
+		i++;
+	}
+	return (num);
 }
 
 

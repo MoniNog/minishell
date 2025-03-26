@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/24 16:19:56 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:48:51 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,10 @@ int		while_quotes(char *input, int i);
 char	**malloc_second_parsing(int len);
 int		is_open_quotes(char *input);
 void	is_env_var(t_input *input);
-void	replace_env_value(t_input *token, int i);
+void	replace_env_value(t_input *token);
 char	*handle_quoted_token(char *quoted_str);
 void	print_token_list(t_input *head);
+void	expand_all_tokens(t_input *head);
 
 // fonctions token
 
@@ -104,6 +105,8 @@ int		is_cmd(char *token, char **env);
 t_input	*tokenize(char **input);
 t_token_type	get_token_type(t_input *token, char *input);
 void	is_cmd_arg(t_input *token);
+int	num_var(t_input *token);
+void	malloc_var_tab(char **var_name, t_input *token, int k);
 
 // fonctions path
 char	**ft_split_path(char *fullpath);
