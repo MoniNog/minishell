@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/26 15:16:35 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/27 18:21:45 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ typedef enum s_token_type
 	T_CMD_ARG,
 	T_ARG,
 	T_FILE,
-	T_ENV,
 	T_OP,
 	T_PIPE,
-	T_SQUOTE,
-	T_DQUOTE
+	T_WORD
 }			t_token_type;
 
 typedef struct s_input
@@ -89,23 +87,32 @@ char	**fill_second_tab(char **array, char **tab_token);
 int		handle_non_operator(char **tab_token, char *array, int *index);
 void	handle_operator(char **tab_token, char **array, int *index, int i);
 void	if_quotes(char *input, char **array, int *k, int *i);
-void	remove_quotes(t_input *head);
 int		while_quotes(char *input, int i);
 char	**malloc_second_parsing(int len);
 int		is_open_quotes(char *input);
 void	is_env_var(t_input *input);
-void	replace_env_value(t_input *token);
 char	*handle_quoted_token(char *quoted_str);
 void	print_token_list(t_input *head);
+char	*handle_double_quote(char *str, int *i);
+char	*handle_env_variable(char *str, int *i);
+char	*extract_plain_text(char *str, int *i);
+char	*expand_token_string(const char *src);
+char	*extract_var_name(const char *str, int *i);
+
 
 // fonctions token
 
-int		is_cmd(char *token, char **env);
-t_input	*tokenize(char **input);
+int				is_cmd(char *token, char **env);
+t_input			*tokenize(char **input);
 t_token_type	get_token_type(t_input *token, char *input);
-void	is_cmd_arg(t_input *token);
-int	num_var(t_input *token);
-void	malloc_var_tab(char **var_name, t_input *token, int k);
+void			is_cmd_arg(t_input *token);
+//int			num_var(t_input *token);
+void			parse_and_expand_token(t_input *token);
+char			*handle_single_quote(char *str, int *i);
+
+//fonctions exit code
+
+void	get_exit_code(void);
 
 // fonctions path
 char	**ft_split_path(char *fullpath);

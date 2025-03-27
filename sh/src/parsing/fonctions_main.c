@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:09:38 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/24 16:22:26 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:52:13 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	print_token_type(t_input *token)
 	case T_FILE:
 		printf("Token type: T_FILE\n");
 		break ;
-	case T_ENV:
-		printf("Token type: T_ENV\n");
 		break ;
 	case T_OP:
 		printf("Token type: T_OP\n");
@@ -43,11 +41,8 @@ void	print_token_type(t_input *token)
 	case T_CMD_ARG:
 		printf("Token type: T_CMD_ARG\n");
 		break;
-	case T_SQUOTE:
-		printf("Token type: T_SQUOTE\n");
-		break;
-	case T_DQUOTE:
-		printf("Token type: T_DQUOTE\n");
+	case T_WORD:
+		printf("Token type: T_WORD\n");
 		break;
 	default:
 		printf("Unknown token type\n");
@@ -90,7 +85,7 @@ void	print_tokens(char **tokens)
 	t_input	*curr = head;
 	int		i = 0;
 
-	printf("\n🔍 Vérification des tokens après expansion :\n");
+	printf("\n Vérification des tokens après expansion :\n");
 	while (curr)
 	{
 		printf("Token[%d]: %s (Type: %d)\n", i, curr->token, curr->type);

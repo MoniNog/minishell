@@ -1,50 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_parsing.c                                    :+:      :+:    :+:   */
+/*   more.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 14:58:51 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/24 18:13:30 by lylrandr         ###   ########.fr       */
+/*   Created: 2025/03/27 17:52:37 by lylrandr          #+#    #+#             */
+/*   Updated: 2025/03/27 17:53:32 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	remove_quotes(t_input *head)
+void	get_exit_code(void)
 {
-	t_input	*curr;
-	char	*new;
-
-	curr = head;
-	while (curr)
-	{
-		if (curr->type == T_SQUOTE || curr->type == T_DQUOTE)
-		{
-			new = handle_quoted_token(curr->token);
-			if (!new)
-				return ;
-			free(curr->token);
-			curr->token = new;
-		}
-		curr = curr->next;
-	}
+	printf("get exit code");
 }
 
-int	num_var(t_input *token)
+int	is_cmd(char *token, char **env)
 {
-	int	i;
-	int	num;
+	char	*path;
+	char	*executable;
 
-	i = 0;
-	while (token->token[i])
+	path = ft_get_env_path(env);
+	if (!path)
+		return (0);
+	executable = ft_get_path(path, token);
+	free(path);
+	if (executable)
 	{
-		if (token->token[i] == '$')
-			num++;
-		i++;
+		free(executable);
+		return (1);
 	}
-	return (num);
+	return (0);
 }
-
-

@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_quotes.c                                    :+:      :+:    :+:   */
+/*   quote2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:13:05 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/25 17:35:10 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:36:26 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+//Supprime les '"' ou '\'' qui entourent un token et retourne le contenu sans les quotes
 char	*handle_quoted_token(char *quoted_str)
 {
 	int	len;
@@ -49,6 +50,7 @@ char	**malloc_second_parsing(int len)
 	return (tab_token);
 }
 
+//Stock un token entre quotes + la suite tant qu'il n'y a pas de separateur
 void	if_quotes(char *input, char **array, int *k, int *i)
 {
 	char	quote;
@@ -80,6 +82,8 @@ void	if_quotes(char *input, char **array, int *k, int *i)
 	array[*i][j] = '\0';
 }
 
+//Parcours un token depuis un guillemet jusqu'a la fin du meme type de guillemet puis copie la suite
+//jusqu'a un separateur
 int	while_quotes(char *input, int i)
 {
 	if (input[i] == '\'')

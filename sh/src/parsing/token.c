@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenize.c                                         :+:      :+:    :+:   */
+/*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:28:30 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/25 16:42:24 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/27 17:43:27 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,20 @@ t_input	*tokenize(char **input)
 
 t_token_type	get_token_type(t_input *token, char *input)
 {
-	int	i;
-
-	i = 0;
-	while (input[i])
+	if (ft_strchr(input, '\'') || ft_strchr(input, '"') || ft_strchr(input, '$'))
 	{
-		if (input[i] == '\'')
-			return (T_SQUOTE);
-		if (input[i] == '"')
-			return (T_DQUOTE);
-		i++;
+		parse_and_expand_token(token);
+		return (T_WORD);
 	}
 	if (ft_strncmp(input, "|", 1) == 0)
 		return (T_PIPE);
 	else if (ft_strncmp(input, "<", 1) == 0 || ft_strncmp(input, ">", 1) == 0
 		|| ft_strncmp(input, ">>", 2) == 0 || ft_strncmp(input, "<<", 2) == 0)
 		return(T_OP);
-	else if (input[0] == '$')
-		return (T_ENV);
 	else if (token->prev != NULL && token->prev->type == T_OP)
 		return (T_FILE);
 	else if (token->prev != NULL && (token->prev->type == T_CMD || token->prev->type == T_ARG
-			|| token->prev->type == T_ENV))
+			|| token->prev->type == T_WORD))
 		return (T_ARG);
 	return (T_CMD);
 }

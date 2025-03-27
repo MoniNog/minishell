@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/25 15:49:37 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:00:16 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int ac, char **av, char **envp)
 		splited_input = parse_input(input);
 		print_tokens(splited_input);
 		head = tokenize(splited_input);
-		remove_quotes(head);
+//		remove_quotes(head);
 		first_word(splited_input, envp);
 //		tester_env(envp);
 		print_all_token_types(head);
