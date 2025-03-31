@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/27 18:21:45 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/31 13:42:18 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,6 @@ void	b_env(t_data *data);
 void	b_cd(t_data *data, char *arg);
 
 // init_environment
-t_env	*create_env_var(char *env_var);
-t_env	*convert_envp(char **envp);
 void	init_env(t_data *data, char **envp);
 
 // init_arg
