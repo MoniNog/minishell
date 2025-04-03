@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 14:05:13 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/27 16:00:16 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:19:43 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,26 @@ char	*get_user_input(const char *prompt)
 	return (line);
 }
 
+void	do_exec(t_input *head, char *env_path)
+{
+	exec_pipe(head, env_path);
+}
+
+t_input	*do_parsing(t_input *head, char **splited_input)
+{
+//	print_tokens(splited_input);
+	head = tokenize(splited_input);
+//	print_all_token_types(head);
+	is_env_var(head);
+//	print_token_list(head);
+	return (head);
+}
 
 int	main(int ac, char **av, char **envp)
 {
 	char	*input;
 	char	**splited_input;
+	char	*env_path;
 	t_input	*head;
 
 	(void)ac;
@@ -41,14 +56,9 @@ int	main(int ac, char **av, char **envp)
 	{
 		input = get_user_input("minishell> ");
 		splited_input = parse_input(input);
-		print_tokens(splited_input);
-		head = tokenize(splited_input);
-//		remove_quotes(head);
-		first_word(splited_input, envp);
-//		tester_env(envp);
-		print_all_token_types(head);
-		is_env_var(head);
-		print_token_list(head);
+		env_path = get_env_path(envp);
+		head = do_parsing(head, splited_input);
+		do_exec(head, env_path);
 		restore_terminal();
 		cleanup_memory(input, splited_input);
 		init_signals();

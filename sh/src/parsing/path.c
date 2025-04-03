@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path_file.c                                    :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:11:17 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/12 14:34:58 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:25:18 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-char	**ft_split_path(char *fullpath)
+char	**split_path(char *fullpath)
 {
 	if (!fullpath)
 		return (NULL);
 	return (ft_split(fullpath, ':'));
 }
 
-char	*ft_find_executable(char **path, char *cmd)
+char	*find_executable(char **path, char *cmd)
 {
 	int		i;
 	char	*temp;
@@ -33,7 +33,7 @@ char	*ft_find_executable(char **path, char *cmd)
 		temp = ft_strjoin(path[i], "/");
 		new_path = ft_strjoin(temp, cmd);
 		free(temp);
-		if (access(new_path, R_OK) == 0)
+		if (access(new_path, X_OK) == 0)
 		{
 //			free_tab(path);
 			return (new_path);
@@ -45,15 +45,15 @@ char	*ft_find_executable(char **path, char *cmd)
 	return (NULL);
 }
 
-char	*ft_get_path(char *fullpath, char *cmd)
+char	*get_path(char *fullpath, char *cmd)
 {
 	char	**path;
 
-	path = ft_split_path(fullpath);
-	return (ft_find_executable(path, cmd));
+	path = split_path(fullpath);
+	return (find_executable(path, cmd));
 }
 
-char	*ft_get_env_path(char **env)
+char	*get_env_path(char **env)
 {
 	int		i;
 	char	**path;

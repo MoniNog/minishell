@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:41:45 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/31 13:42:18 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:42:50 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_env
 
 typedef struct s_data
 {
-	t_input		**input;// ligne de commande
+	t_input		*input;// ligne de commande
 	t_env		*env;// tableau envp
 	char		**copy_env;
 	int			exit_status;
@@ -81,7 +81,6 @@ void	if_operator(char *input, char **array, int *k, int i);
 int		word_len(char *input);
 char	**first_parsing(char *input);
 char	**second_parsing(char **array);
-void	first_word(char **input, char **env);
 char	**parse_input(char *input);
 char	**fill_second_tab(char **array, char **tab_token);
 int		handle_non_operator(char **tab_token, char *array, int *index);
@@ -99,6 +98,18 @@ char	*extract_plain_text(char *str, int *i);
 char	*expand_token_string(const char *src);
 char	*extract_var_name(const char *str, int *i);
 
+//fonctions execution
+
+int		is_builtin(char *cmd);
+void	first_word(char **input, char **env);
+char	**build_cmd_arg(t_input *token);
+int		count_cmd(t_input *head);
+void	exec_pipe(t_input *head, char *env_path);
+int		exec_parent(int fd[2], int in_fd, int has_next);
+void	exec_child(t_input *head, char *env_path, int in_fd, int out_fd);
+t_input	*get_next_command(t_input *node);
+int		has_next_cmd(t_input *node);
+
 
 // fonctions token
 
@@ -115,10 +126,10 @@ char			*handle_single_quote(char *str, int *i);
 void	get_exit_code(void);
 
 // fonctions path
-char	**ft_split_path(char *fullpath);
-char	*ft_find_executable(char **path, char *cmd);
-char	*ft_get_path(char *fullpath, char *cmd);
-char	*ft_get_env_path(char **env);
+char	**split_path(char *fullpath);
+char	*find_executable(char **path, char *cmd);
+char	*get_path(char *fullpath, char *cmd);
+char	*get_env_path(char **env);
 
 //fonctions main [ ] a renommer
 void	print_token_type(t_input *token);

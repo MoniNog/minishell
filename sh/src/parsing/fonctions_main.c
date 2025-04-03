@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:09:38 by monoguei          #+#    #+#             */
-/*   Updated: 2025/03/27 17:52:13 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/04/01 15:27:42 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	print_token_type(t_input *token)
 		break ;
 	case T_FILE:
 		printf("Token type: T_FILE\n");
-		break ;
 		break ;
 	case T_OP:
 		printf("Token type: T_OP\n");
@@ -88,7 +87,7 @@ void	print_tokens(char **tokens)
 	printf("\n Vérification des tokens après expansion :\n");
 	while (curr)
 	{
-		printf("Token[%d]: %s (Type: %d)\n", i, curr->token, curr->type);
+		printf("Token[%d]: %s\n", i, curr->token);
 		curr = curr->next;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 17:07:22 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/03/19 18:32:00 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:20:44 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ void	cleanup_memory(char *line, char **splited_line)
 {
 	int	j;
 
-	free(line);
+	if (line)
+		free(line);
 	j = 0;
 	while (splited_line[j])
 	{
-		free(splited_line[j]);
+		if (splited_line[j])
+			free(splited_line[j]);
 		j++;
 	}
-	free(splited_line);
+	if (splited_line)
+		free(splited_line);
 }
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
