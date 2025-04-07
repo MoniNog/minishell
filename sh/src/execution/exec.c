@@ -6,7 +6,7 @@
 /*   By: lylrandr <lylrandr@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:37:28 by lylrandr          #+#    #+#             */
-/*   Updated: 2025/04/02 18:28:15 by lylrandr         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:12:45 by lylrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,66 +40,96 @@ t_input	*get_next_command(t_input *node)
 	return (NULL);
 }
 
-void	exec_child(t_input *head, char *env_path, int in_fd, int out_fd)
+// void	exec_child(t_input *head, char *env_path, int in_fd, int out_fd)
+//{
+//	char	**cmd;
+//	char	*cmd_path;
+//
+//	if (in_fd != 0)
+//	{
+//		dup2(in_fd, 0);
+//		close(in_fd);
+//	}
+//	if (out_fd != -1)
+//	{
+//		dup2(out_fd, 1);
+//		close(out_fd);
+//	}
+//	cmd = build_cmd_arg(head);
+//	cmd_path = get_path(env_path, cmd[0]);
+//	execve(cmd_path, cmd, NULL);
+//	printf("minishell: command not found: %s\n", cmd[0]);
+//}
+
+// int	exec_parent(int fd[2], int in_fd, int has_next)
+//{
+//	if (in_fd != 0)
+//		close(in_fd);
+//	if (has_next)
+//	{
+//		close(fd[1]);
+//		return (fd[0]);
+//	}
+//	else
+//		close(fd[0]);
+//	return (0);
+//}
+
+void	exec_child(int prev_pipe, t_input *current, int fd[2], char *env_path)
 {
 	char	**cmd;
 	char	*cmd_path;
 
-	if (in_fd != 0)
+	if (prev_pipe != 0)
 	{
-		dup2(in_fd, 0);
-		close(in_fd);
+		dup2(prev_pipe, 0);
+		close(prev_pipe);
 	}
-	if (out_fd != -1)
+	if (has_next_cmd(current))
 	{
-		dup2(out_fd, 1);
-		close(out_fd);
+		dup2(fd[1], 1);
+		close(fd[0]);
+		close(fd[1]);
 	}
-	cmd = build_cmd_arg(head);
+	cmd = build_cmd_arg(current);
 	cmd_path = get_path(env_path, cmd[0]);
 	execve(cmd_path, cmd, NULL);
 	printf("minishell: command not found: %s\n", cmd[0]);
+	exit(127);
 }
 
-int	exec_parent(int fd[2], int in_fd, int has_next)
+void	exec_parent(int *prev_pipe, t_input **current, int fd[2])
 {
-	if (in_fd != 0)
-		close(in_fd);
-	if (has_next)
+	if (*prev_pipe != 0)
+		close(*prev_pipe);
+	if (has_next_cmd(*current))
 	{
 		close(fd[1]);
-		return (fd[0]);
+		*prev_pipe = fd[0];
 	}
-	else
+	else if (fd[0])
 		close(fd[0]);
-	return (0);
+	*current = get_next_command(*current);
 }
-
 
 void	exec_pipe(t_input *head, char *env_path)
 {
 	int		fd[2];
-	int		out_fd;
-	int		in_fd;
+	int		prev_pipe;
 	pid_t	pid;
+	t_input	*current;
 
-	in_fd = 0;
-	while (head)
+	prev_pipe = 0;
+	current = head;
+	while (current)
 	{
-		if (has_next_cmd(head))
+		if (has_next_cmd(current))
 			pipe(fd);
 		pid = fork();
 		if (pid == 0)
-		{
-			if (has_next_cmd(head))
-				out_fd = fd[1];
-			else
-				out_fd = -1;
-			exec_child(head, env_path, in_fd, out_fd);
-		}
+			exec_child(prev_pipe, current, fd, env_path);
 		else
-			in_fd = exec_parent(fd, in_fd, has_next_cmd(head));
-		head = get_next_command(head);
+			exec_parent(&prev_pipe, &current, fd);
 	}
 	wait_all();
 }
